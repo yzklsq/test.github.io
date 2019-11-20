@@ -50,20 +50,21 @@
   };
 </script>
 
-  <meta name="description" content="隐蔽通道技术（1）定义1 : 1973年被Lampson提出，指在系统中，以违反主机安全策略的方式来传递信息。 （2）定义2 ：给定一个强制安全策略模型M及其在一个操作系统中的解释I(M)， I(M)中的两个主体I(Sh)和I(Sl)之间的通信是隐蔽的，当且仅当模型M中的对应主体Sh和Sl之间的任何通信都是非法的。 ——即隐蔽通道技术是一种非常规的信息传递方式。 隐蔽通道技术的分类基于存储——存储">
+  <meta name="description" content="隐蔽通道技术（1）定义1 : 1973年被Lampson提出，指在系统中，以违反主机安全策略的方式来传递信息。 （2）定义2 ：给定一个强制安全策略模型M及其在一个操作系统中的解释I(M)， I(M)中的两个主体I(Sh)和I(Sl)之间的通信是隐蔽的，当且仅当模型M中的对应主体Sh和Sl之间的任何通信都是非法的。 ——即隐蔽通道技术是一种非常规的信息传递方式。 隐蔽通道技术的分类基于存储——存">
 <meta name="keywords" content="隐蔽通道">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《SSL协议隐蔽通道的研究与实现》笔记">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;19&#x2F;%E3%80%8ASSL%E5%8D%8F%E8%AE%AE%E9%9A%90%E8%94%BD%E9%80%9A%E9%81%93%E7%9A%84%E7%A0%94%E7%A9%B6%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B%E7%AC%94%E8%AE%B0&#x2F;index.html">
 <meta property="og:site_name" content="Yzk&#39;s Blog">
-<meta property="og:description" content="隐蔽通道技术（1）定义1 : 1973年被Lampson提出，指在系统中，以违反主机安全策略的方式来传递信息。 （2）定义2 ：给定一个强制安全策略模型M及其在一个操作系统中的解释I(M)， I(M)中的两个主体I(Sh)和I(Sl)之间的通信是隐蔽的，当且仅当模型M中的对应主体Sh和Sl之间的任何通信都是非法的。 ——即隐蔽通道技术是一种非常规的信息传递方式。 隐蔽通道技术的分类基于存储——存储">
+<meta property="og:description" content="隐蔽通道技术（1）定义1 : 1973年被Lampson提出，指在系统中，以违反主机安全策略的方式来传递信息。 （2）定义2 ：给定一个强制安全策略模型M及其在一个操作系统中的解释I(M)， I(M)中的两个主体I(Sh)和I(Sl)之间的通信是隐蔽的，当且仅当模型M中的对应主体Sh和Sl之间的任何通信都是非法的。 ——即隐蔽通道技术是一种非常规的信息传递方式。 隐蔽通道技术的分类基于存储——存">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;19&#x2F;%E3%80%8ASSL%E5%8D%8F%E8%AE%AE%E9%9A%90%E8%94%BD%E9%80%9A%E9%81%93%E7%9A%84%E7%A0%94%E7%A9%B6%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B%E7%AC%94%E8%AE%B0&#x2F;00.jpg">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;19&#x2F;%E3%80%8ASSL%E5%8D%8F%E8%AE%AE%E9%9A%90%E8%94%BD%E9%80%9A%E9%81%93%E7%9A%84%E7%A0%94%E7%A9%B6%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B%E7%AC%94%E8%AE%B0&#x2F;1FCB9638F062110526807FDC33FCB831.jpg">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;19&#x2F;%E3%80%8ASSL%E5%8D%8F%E8%AE%AE%E9%9A%90%E8%94%BD%E9%80%9A%E9%81%93%E7%9A%84%E7%A0%94%E7%A9%B6%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B%E7%AC%94%E8%AE%B0&#x2F;79CAE2FD0F2548ABF1E6E1529DA3480F.jpg">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;19&#x2F;%E3%80%8ASSL%E5%8D%8F%E8%AE%AE%E9%9A%90%E8%94%BD%E9%80%9A%E9%81%93%E7%9A%84%E7%A0%94%E7%A9%B6%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B%E7%AC%94%E8%AE%B0&#x2F;A5D30F5E90014F8DB6A8681B5C4DB56C.jpg">
-<meta property="og:updated_time" content="2019-11-20T07:50:38.170Z">
+<meta property="og:updated_time" content="2019-11-20T07:58:05.349Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;19&#x2F;%E3%80%8ASSL%E5%8D%8F%E8%AE%AE%E9%9A%90%E8%94%BD%E9%80%9A%E9%81%93%E7%9A%84%E7%A0%94%E7%A9%B6%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B%E7%AC%94%E8%AE%B0&#x2F;1FCB9638F062110526807FDC33FCB831.jpg">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;19&#x2F;%E3%80%8ASSL%E5%8D%8F%E8%AE%AE%E9%9A%90%E8%94%BD%E9%80%9A%E9%81%93%E7%9A%84%E7%A0%94%E7%A9%B6%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B%E7%AC%94%E8%AE%B0&#x2F;00.jpg">
 
 <link rel="canonical" href="http://yoursite.com/2019/11/19/%E3%80%8ASSL%E5%8D%8F%E8%AE%AE%E9%9A%90%E8%94%BD%E9%80%9A%E9%81%93%E7%9A%84%E7%A0%94%E7%A9%B6%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B%E7%AC%94%E8%AE%B0/">
 
@@ -219,7 +220,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-20 15:50:38" itemprop="dateModified" datetime="2019-11-20T15:50:38+08:00">2019-11-20</time>
+                <time title="修改时间：2019-11-20 15:58:05" itemprop="dateModified" datetime="2019-11-20T15:58:05+08:00">2019-11-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -244,7 +245,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="隐蔽通道技术"><a href="#隐蔽通道技术" class="headerlink" title="隐蔽通道技术"></a>隐蔽通道技术</h1><p>（1）定义1 : 1973年被Lampson提出，指在系统中，以<strong>违反主机安全策略</strong>的方式来<strong>传递信息</strong>。</p>
+        <p><img src="/2019/11/19/%E3%80%8ASSL%E5%8D%8F%E8%AE%AE%E9%9A%90%E8%94%BD%E9%80%9A%E9%81%93%E7%9A%84%E7%A0%94%E7%A9%B6%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B%E7%AC%94%E8%AE%B0/00.jpg" alt="00"></p>
+<h1 id="隐蔽通道技术"><a href="#隐蔽通道技术" class="headerlink" title="隐蔽通道技术"></a>隐蔽通道技术</h1><p>（1）定义1 : 1973年被Lampson提出，指在系统中，以<strong>违反主机安全策略</strong>的方式来<strong>传递信息</strong>。</p>
 <p>（2）定义2 ：给定一个<strong>强制安全策略</strong>模型M及其在一个操作系统中的解释I(M)， I(M)中的两个主体I(Sh)和I(Sl)之间的通信是隐蔽的，当且仅当模型M中的对应主体Sh和Sl之间的任何通信都是非法的。</p>
 <p>——<font color="red">即隐蔽通道技术是一种非常规的信息传递方式。</font></p>
 <h1 id="隐蔽通道技术的分类"><a href="#隐蔽通道技术的分类" class="headerlink" title="隐蔽通道技术的分类"></a>隐蔽通道技术的分类</h1><h2 id="基于存储——存储通道"><a href="#基于存储——存储通道" class="headerlink" title="基于存储——存储通道"></a>基于存储——存储通道</h2><p>如果一个进程直接或间接地写入一个<font color="red"><strong>存储单元</strong></font>，另一个进程直接或间接地读取该存储单元，则称这种通道为隐蔽存储通道。</p>
@@ -261,23 +263,23 @@
 <h2 id="SSL-TLS运行机制"><a href="#SSL-TLS运行机制" class="headerlink" title="SSL/TLS运行机制"></a>SSL/TLS运行机制</h2><p>一共经历四次握手，主要是证书的交换（公钥保存在证书中）、验证。</p>
 <img src="/2019/11/19/%E3%80%8ASSL%E5%8D%8F%E8%AE%AE%E9%9A%90%E8%94%BD%E9%80%9A%E9%81%93%E7%9A%84%E7%A0%94%E7%A9%B6%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B%E7%AC%94%E8%AE%B0/1FCB9638F062110526807FDC33FCB831.jpg" alt="1FCB9638F062110526807FDC33FCB831" style="zoom: 40%;">
 
-<h3 id="1-第一次握手：客户端–-gt-服务器"><a href="#1-第一次握手：客户端–-gt-服务器" class="headerlink" title="1. 第一次握手：客户端–&gt;服务器"></a>1. 第一次握手：客户端–&gt;服务器</h3><p>在建立加密通信前，客户端（通常为浏览器）会向服务器发送请求，该请求被称为ClientHello请求。</p>
+<h3 id="第一次握手：客户端–-gt-服务器"><a href="#第一次握手：客户端–-gt-服务器" class="headerlink" title="第一次握手：客户端–&gt;服务器"></a>第一次握手：客户端–&gt;服务器</h3><p>在建立加密通信前，客户端（通常为浏览器）会向服务器发送请求，该请求被称为ClientHello请求。</p>
 <p>该请求包括：</p>
 <table><tr><td bgcolor="#F8F8FF">（1）支持的协议版本；<br>（2）一个客户端生成的<b>随机数</b>，稍后用于生成“对话密钥”；<br>（3）支持的加密方法，比如RSA公钥加密；<br>（4）支持的压缩方法。</td></tr></table>
 需要注意的是：
 
 <p>客户端发送的信息不包括服务器的域名，这意味着服务器理论上只能有一个网站，否者服务器将不知道给客户端发送哪个数字证书（这也是服务器通常只有一个数字证书的原因）。</p>
 <p>但这对于虚拟主机的用户来说很不方便，所以在2006年，TLS协议加入了一个Server Name Indication扩展，允许客户端向服务器提供它所请求的域名。</p>
-<h3 id="2-第二次握手：服务器–-gt-客户端"><a href="#2-第二次握手：服务器–-gt-客户端" class="headerlink" title="2. 第二次握手：服务器–&gt;客户端"></a>2. 第二次握手：服务器–&gt;客户端</h3><p>服务器收到客户端的请求后，向客户端作出回应，这叫做ServerHello。<br>该回应包括：</p>
+<h3 id="第二次握手：服务器–-gt-客户端"><a href="#第二次握手：服务器–-gt-客户端" class="headerlink" title="第二次握手：服务器–&gt;客户端"></a>第二次握手：服务器–&gt;客户端</h3><p>服务器收到客户端的请求后，向客户端作出回应，这叫做ServerHello。<br>该回应包括：</p>
 <table bgcolor="#F8F8FF"><tr><td>（1）确认使用的加密通信协议版本，如果浏览器与服务器支持的版本不一致，服务器将关闭加密通信；<br>（2）一个服务器产生成的<b>随机数</b>，稍后用于产生“对话密钥”（保证计算机之间安全通信而随机产生的密钥，亦称<b>对称密钥</b>（数据加密密钥或者工作密钥），即<b>同一密钥用于加密和解密）</b>；<br>（3）确认使用的加密方式，比如RSA公钥加密；<br>（4）服务器证书；<br>（5）请求客户端证书（如果服务器需要的话）。</td></tr></table>
-### 3.第三次握手：客户端-->服务器
+### 第三次握手：客户端-->服务器
 
 <p>客户端收到服务器回应以后，首先验证服务器证书。如果证书不是可信机构颁布、或者证书中的域名与实际域名不一致、或者证书已经过期，就会向访问者显示一个警告，由其选择是否还要继续通信。</p>
 <p>如果证书没有问题，<strong>客户端就会从证书中取出服务器的公钥</strong>。然后，向服务器发送下面三项信息。</p>
 <table bgcolor="#F8F8FF"><tr><td>（1）一个<b>随机数</b>（第三个随机数，亦称pre-master key）。该随机数<b>用服务器公钥加密</b>，防止被窃听；<br>（2）编码改变通知，表示随后的信息都将用双方商定的加密方式和密钥发送；<br>（3）客户端证书（如果前一步服务器需要的话）；<br>（4）客户端握手结束通知，这一项同时也是前面发送的所有内容的hash值，用来供服务器校验。</td></tr></table>
 该随机数（pre-master key）和之前的两个随机数利用之前协商好的加密方式各产生一组会话密钥（对称密钥），之后数据的传递都将使用这个密钥进行加密（直至断开链接）。同时，使用公钥和私钥对会话密钥进行加密。这样避免了非对称加密所需消耗的大量资源，避免了CPU消耗，提高效率。
 
-<h3 id="4-第四次握手：服务器–-gt-客户端"><a href="#4-第四次握手：服务器–-gt-客户端" class="headerlink" title="4. 第四次握手：服务器–&gt;客户端"></a>4. 第四次握手：服务器–&gt;客户端</h3><p>服务器接收到第三个随机数pre-master key之后计算本次会话的会话密钥，并向客户端发送以下信息：</p>
+<h3 id="第四次握手：服务器–-gt-客户端"><a href="#第四次握手：服务器–-gt-客户端" class="headerlink" title="第四次握手：服务器–&gt;客户端"></a>第四次握手：服务器–&gt;客户端</h3><p>服务器接收到第三个随机数pre-master key之后计算本次会话的会话密钥，并向客户端发送以下信息：</p>
 <table bgcolor="#F8F8FF"><tr><td>（1）编码改变通知，表示随后的信息都将用双方商定的加密方式和密钥发送；<br>（2）服务器发送握手通知，表示服务器的握手阶段已经结束。这一项同时也是前面发送的所有内容的hash值，用来供客户端校验。</td></tr></table>
 # HTTP和HTTPS
 
@@ -388,7 +390,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#隐蔽通道技术"><span class="nav-number">1.</span> <span class="nav-text">隐蔽通道技术</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#隐蔽通道技术的分类"><span class="nav-number">2.</span> <span class="nav-text">隐蔽通道技术的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基于存储——存储通道"><span class="nav-number">2.1.</span> <span class="nav-text">基于存储——存储通道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于时间——定时通道"><span class="nav-number">2.2.</span> <span class="nav-text">基于时间——定时通道</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSL和TLS——安全套接层和传输层安全"><span class="nav-number">3.</span> <span class="nav-text">SSL和TLS——安全套接层和传输层安全</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SSL-TLS提供的服务"><span class="nav-number">3.1.</span> <span class="nav-text">SSL/TLS提供的服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSL-TLS运行机制"><span class="nav-number">3.2.</span> <span class="nav-text">SSL/TLS运行机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-第一次握手：客户端–-gt-服务器"><span class="nav-number">3.2.1.</span> <span class="nav-text">1. 第一次握手：客户端–&gt;服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-第二次握手：服务器–-gt-客户端"><span class="nav-number">3.2.2.</span> <span class="nav-text">2. 第二次握手：服务器–&gt;客户端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-第四次握手：服务器–-gt-客户端"><span class="nav-number">3.2.3.</span> <span class="nav-text">4. 第四次握手：服务器–&gt;客户端</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSL构建方法"><span class="nav-number">4.</span> <span class="nav-text">SSL构建方法</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#隐蔽通道技术"><span class="nav-number">1.</span> <span class="nav-text">隐蔽通道技术</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#隐蔽通道技术的分类"><span class="nav-number">2.</span> <span class="nav-text">隐蔽通道技术的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基于存储——存储通道"><span class="nav-number">2.1.</span> <span class="nav-text">基于存储——存储通道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于时间——定时通道"><span class="nav-number">2.2.</span> <span class="nav-text">基于时间——定时通道</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSL和TLS——安全套接层和传输层安全"><span class="nav-number">3.</span> <span class="nav-text">SSL和TLS——安全套接层和传输层安全</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SSL-TLS提供的服务"><span class="nav-number">3.1.</span> <span class="nav-text">SSL/TLS提供的服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSL-TLS运行机制"><span class="nav-number">3.2.</span> <span class="nav-text">SSL/TLS运行机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一次握手：客户端–-gt-服务器"><span class="nav-number">3.2.1.</span> <span class="nav-text">第一次握手：客户端–&gt;服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二次握手：服务器–-gt-客户端"><span class="nav-number">3.2.2.</span> <span class="nav-text">第二次握手：服务器–&gt;客户端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四次握手：服务器–-gt-客户端"><span class="nav-number">3.2.3.</span> <span class="nav-text">第四次握手：服务器–&gt;客户端</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSL构建方法"><span class="nav-number">4.</span> <span class="nav-text">SSL构建方法</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
