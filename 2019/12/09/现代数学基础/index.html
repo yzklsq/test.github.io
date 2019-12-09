@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="第一章 数值分析：特点和原则误差和误差限误差若X是X的一个近似值，称e =X*-X为X*的绝对误差。 误差限若|e*|≤ε*, 称ε*为（绝对）误差限，X的范围： x*- ε* ≤ x ≤ x*+ ε*。 相对误差  有效数字（必考）若误差限是X*某一位上的半个单位，且该位到X*的第一位非零数字共有n位，则X*有n位有效数字。 如：X=3.1415926，而X*=3.14，则误差项是｜3.14-3">
+<meta name="keywords" content="笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《现代数学基础》">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80&#x2F;index.html">
+<meta property="og:site_name" content="Yzk&#39;s Blog">
+<meta property="og:description" content="第一章 数值分析：特点和原则误差和误差限误差若X是X的一个近似值，称e =X*-X为X*的绝对误差。 误差限若|e*|≤ε*, 称ε*为（绝对）误差限，X的范围： x*- ε* ≤ x ≤ x*+ ε*。 相对误差  有效数字（必考）若误差限是X*某一位上的半个单位，且该位到X*的第一位非零数字共有n位，则X*有n位有效数字。 如：X=3.1415926，而X*=3.14，则误差项是｜3.14-3">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80&#x2F;image-20191202112909207.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80&#x2F;image-20191202151921926.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80&#x2F;image-20191202152103459.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80&#x2F;image-20191209103844924.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80&#x2F;image-20191209104242505.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80&#x2F;image-20191209104436508.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80&#x2F;image-20191209104455820.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80&#x2F;image-20191209103844924.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80&#x2F;image-20191209143143668.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80&#x2F;image-20191209143215204.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80&#x2F;image-20191209143347000.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80&#x2F;image-20191209143546426.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80&#x2F;image-20191209143618128.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80&#x2F;image-20191209143659390.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80&#x2F;image-20191209144448751.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80&#x2F;image-20191209144509193.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80&#x2F;image-20191209144746874.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80&#x2F;image-20191209150002286.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80&#x2F;image-20191209150107372.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80&#x2F;image-20191209150217016.png">
+<meta property="og:updated_time" content="2019-12-09T07:29:05.342Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80&#x2F;image-20191202112909207.png">
+
+<link rel="canonical" href="http://yoursite.com/2019/12/09/%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>《现代数学基础》 | Yzk's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yzk's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">好好学习，天天向上。</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/09/%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/lufei.jpeg">
+      <meta itemprop="name" content="YZK">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yzk's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          《现代数学基础》
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-12-09 15:13:31 / 修改时间：15:29:05" itemprop="dateCreated datePublished" datetime="2019-12-09T15:13:31+08:00">2019-12-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="第一章-数值分析：特点和原则"><a href="#第一章-数值分析：特点和原则" class="headerlink" title="第一章 数值分析：特点和原则"></a>第一章 数值分析：特点和原则</h1><h2 id="误差和误差限"><a href="#误差和误差限" class="headerlink" title="误差和误差限"></a>误差和误差限</h2><h3 id="误差"><a href="#误差" class="headerlink" title="误差"></a>误差</h3><p>若X<em>是X的一个近似值，称e</em> =X<sup>*</sup>-X为X<sup>*</sup>的绝对误差。</p>
+<h3 id="误差限"><a href="#误差限" class="headerlink" title="误差限"></a>误差限</h3><p>若|e*|≤ε*, 称ε*为（绝对）误差限，X的范围： x*- ε* ≤ x ≤ x*+ ε*。</p>
+<h3 id="相对误差"><a href="#相对误差" class="headerlink" title="相对误差"></a>相对误差</h3><img src="/2019/12/09/%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20191202112909207.png" alt="image-20191202112909207" style="zoom:15%;">
+
+<h3 id="有效数字（必考）"><a href="#有效数字（必考）" class="headerlink" title="有效数字（必考）"></a><strong>有效数字</strong>（必考）</h3><p>若误差限是X*某一位上的半个单位，且该位到X*的第一位非零数字共有n位，则X*有n位有效数字。</p>
+<p>如：X=3.1415926，而X*=3.14，则误差项是｜3.14-3.1415926｜&lt;=  $$\cfrac{1}{2}$$*10<sup>-2</sup></p>
+<p>所以它的有效数字从小数点第二位到第一位非零数字3开始算起，总共3位有效数字。</p>
+<p><strong>数学式定义：</strong>若<img src="/2019/12/09/%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20191202151921926.png" alt="image-20191202151921926" style="zoom:15%;">  则<img src="/2019/12/09/%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20191202152103459.png" alt="image-20191202152103459" style="zoom:15%;"></p>
+<p>所以X*的有效数字为n，误差限为$$\cfrac{1}{2}$$*10<sup>m-n+1</sup></p>
+<h1 id="第二章-函数的插值与逼近"><a href="#第二章-函数的插值与逼近" class="headerlink" title="第二章 函数的插值与逼近"></a>第二章 函数的插值与逼近</h1><p>定义：已知f(x)在[a,b]上有定义，且已知其在[a,b]上n+1个点的信息，则若函数p(x<sub>i</sub>)=f(x<sub>i</sub>)，i=0,1,2,…,n。则称p(x)为f(x)的插值函数。</p>
+<p>注：因代数多项式具有各阶导数存在且计算方便等特点，所以重点讨论多项式插值方法。</p>
+<h2 id="多项式插值"><a href="#多项式插值" class="headerlink" title="多项式插值"></a>多项式插值</h2><p>形如<img src="/2019/12/09/%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20191209103844924.png" alt="image-20191209103844924" style="zoom:15%;">的多项式为我们想要的多项式插值。</p>
+<h3 id="定理1：满足定义的多项式插值存在且唯一"><a href="#定理1：满足定义的多项式插值存在且唯一" class="headerlink" title="定理1：满足定义的多项式插值存在且唯一"></a>定理1：满足定义的多项式插值存在且唯一</h3><p>证明：将p(x<sub>i</sub>)=y<sub>i</sub>带入可得，</p>
+<img src="/2019/12/09/%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20191209104242505.png" alt="image-20191209104242505" style="zoom:25%;">
+
+<p>该式的行列式为（该行列式为范德蒙行列式，故求解如下）</p>
+<div align="center"><img src="/2019/12/09/%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20191209104436508.png" alt="image-20191209104436508" style="zoom:25%;" align="center"><img src="/2019/12/09/%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20191209104455820.png" alt="image-20191209104455820" style="zoom:25%;" align="center"></div>
+已知x<sub>i</sub> != x<sub>j</sub>，则该行列式不为0，所以多项式插值存在且唯一。
+
+<h2 id="Lagrange插值"><a href="#Lagrange插值" class="headerlink" title="Lagrange插值"></a>Lagrange插值</h2><p>Lagrange插值即是把<img src="/2019/12/09/%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20191209103844924.png" alt="image-20191209103844924" style="zoom:15%;">转换成<img src="/2019/12/09/%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20191209143143668.png" alt="image-20191209143143668" style="zoom:15%;"></p>
+<div algin="left"><img src="/2019/12/09/%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20191209143215204.png" alt="image-20191209143215204" style="zoom:15%;">其中，<img src="/2019/12/09/%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20191209143347000.png" alt="image-20191209143347000" style="zoom:15%;"></div>
+l<sub>0</sub>(x)满足：
+
+<div align="center"><img src="/2019/12/09/%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20191209143546426.png" alt="image-20191209143546426" style="zoom:25%;">,<img src="/2019/12/09/%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20191209143618128.png" alt="image-20191209143618128" style="zoom:25%;">,<img src="/2019/12/09/%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20191209143659390.png" alt="image-20191209143659390" style="zoom:25%;"></div>
+则
+
+<img src="/2019/12/09/%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20191209144448751.png" alt="image-20191209144448751" style="zoom:25%;">
+
+<div align="center"><img src="/2019/12/09/%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20191209144509193.png" alt="image-20191209144509193" style="zoom:25%;"></div>
+<img src="/2019/12/09/%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20191209144746874.png" alt="image-20191209144746874" style="zoom:25%;">
+
+
+
+<p>注：参考对F(x)=f(x)f(x)求导，可知w(x)求导为$$\prod_{j=0,j \neq i}^n=(xi-xj)$$</p>
+<p><strong>此外，内插（要计算的点在已知点的内部）通常比外插好，高次插值通常优于低次插值。</strong></p>
+<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><img src="/2019/12/09/%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20191209150002286.png" alt="image-20191209150002286" style="zoom:33%;">
+
+<details>
+<summary>解答过程</summary>
+<img src="/2019/12/09/%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20191209150107372.png" alt="image-20191209150107372" style="zoom:33%;"><img src="/2019/12/09/%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20191209150217016.png" alt="image-20191209150217016" style="zoom:33%;">
+</details>
+
+<h2 id="Newton插值"><a href="#Newton插值" class="headerlink" title="Newton插值"></a>Newton插值</h2>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/11/19/%E3%80%8ASSL%E5%8D%8F%E8%AE%AE%E9%9A%90%E8%94%BD%E9%80%9A%E9%81%93%E7%9A%84%E7%A0%94%E7%A9%B6%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B%E7%AC%94%E8%AE%B0/" rel="next" title="《SSL协议隐蔽通道的研究与实现》笔记">
+                  <i class="fa fa-chevron-left"></i> 《SSL协议隐蔽通道的研究与实现》笔记
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一章-数值分析：特点和原则"><span class="nav-number">1.</span> <span class="nav-text">第一章 数值分析：特点和原则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#误差和误差限"><span class="nav-number">1.1.</span> <span class="nav-text">误差和误差限</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#误差"><span class="nav-number">1.1.1.</span> <span class="nav-text">误差</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误差限"><span class="nav-number">1.1.2.</span> <span class="nav-text">误差限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相对误差"><span class="nav-number">1.1.3.</span> <span class="nav-text">相对误差</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有效数字（必考）"><span class="nav-number">1.1.4.</span> <span class="nav-text">有效数字（必考）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二章-函数的插值与逼近"><span class="nav-number">2.</span> <span class="nav-text">第二章 函数的插值与逼近</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#多项式插值"><span class="nav-number">2.1.</span> <span class="nav-text">多项式插值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定理1：满足定义的多项式插值存在且唯一"><span class="nav-number">2.1.1.</span> <span class="nav-text">定理1：满足定义的多项式插值存在且唯一</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lagrange插值"><span class="nav-number">2.2.</span> <span class="nav-text">Lagrange插值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例题"><span class="nav-number">2.2.1.</span> <span class="nav-text">例题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Newton插值"><span class="nav-number">2.3.</span> <span class="nav-text">Newton插值</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="YZK"
+    src="/images/lufei.jpeg">
+  <p class="site-author-name" itemprop="name">YZK</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YZK</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
