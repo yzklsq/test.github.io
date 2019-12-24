@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="一、ERP系统原理和实施ERP系统定义：Enterprise Resource Planning，企业资源计划。 系统构成 ERP软件 业务流程 战略计划层、管理控制层、业务操作层   用户 运行环境（硬件，操作系统等）  ERP系统在不同的管理层次的作用 业务控制层：降低业务成本；  管理控制层：促进实施管理的实施；  战略计划层：支持战略计划。">
+<meta name="keywords" content="ERP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ERP">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;24&#x2F;ERP&#x2F;index.html">
+<meta property="og:site_name" content="Yzk&#39;s Blog">
+<meta property="og:description" content="一、ERP系统原理和实施ERP系统定义：Enterprise Resource Planning，企业资源计划。 系统构成 ERP软件 业务流程 战略计划层、管理控制层、业务操作层   用户 运行环境（硬件，操作系统等）  ERP系统在不同的管理层次的作用 业务控制层：降低业务成本；  管理控制层：促进实施管理的实施；  战略计划层：支持战略计划。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;Desktop&#x2F;%25E7%25AC%2594%25E8%25AE%25B0&#x2F;%25E7%25A0%2594%25E4%25B8%2580%25E4%25B8%258A&#x2F;%25E4%25BC%2581%25E4%25B8%259A%25E8%25B5%2584%25E6%25BA%2590%25E8%25AE%25A1%25E5%2588%2592%25E4%25B8%258E%25E5%2595%2586%25E5%258A%25A1%25E6%2599%25BA%25E8%2583%25BD&#x2F;ERP&#x2F;image-20191224112511375.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;Desktop&#x2F;%25E7%25AC%2594%25E8%25AE%25B0&#x2F;%25E7%25A0%2594%25E4%25B8%2580%25E4%25B8%258A&#x2F;%25E4%25BC%2581%25E4%25B8%259A%25E8%25B5%2584%25E6%25BA%2590%25E8%25AE%25A1%25E5%2588%2592%25E4%25B8%258E%25E5%2595%2586%25E5%258A%25A1%25E6%2599%25BA%25E8%2583%25BD&#x2F;ERP&#x2F;image-20191224112608900.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;Desktop&#x2F;%25E7%25AC%2594%25E8%25AE%25B0&#x2F;%25E7%25A0%2594%25E4%25B8%2580%25E4%25B8%258A&#x2F;%25E4%25BC%2581%25E4%25B8%259A%25E8%25B5%2584%25E6%25BA%2590%25E8%25AE%25A1%25E5%2588%2592%25E4%25B8%258E%25E5%2595%2586%25E5%258A%25A1%25E6%2599%25BA%25E8%2583%25BD&#x2F;ERP&#x2F;image-20191224112650345.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;Desktop&#x2F;%25E7%25AC%2594%25E8%25AE%25B0&#x2F;%25E7%25A0%2594%25E4%25B8%2580%25E4%25B8%258A&#x2F;%25E4%25BC%2581%25E4%25B8%259A%25E8%25B5%2584%25E6%25BA%2590%25E8%25AE%25A1%25E5%2588%2592%25E4%25B8%258E%25E5%2595%2586%25E5%258A%25A1%25E6%2599%25BA%25E8%2583%25BD&#x2F;ERP&#x2F;image-20191224112723336.png">
+<meta property="og:updated_time" content="2019-12-24T03:36:13.114Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;Desktop&#x2F;%25E7%25AC%2594%25E8%25AE%25B0&#x2F;%25E7%25A0%2594%25E4%25B8%2580%25E4%25B8%258A&#x2F;%25E4%25BC%2581%25E4%25B8%259A%25E8%25B5%2584%25E6%25BA%2590%25E8%25AE%25A1%25E5%2588%2592%25E4%25B8%258E%25E5%2595%2586%25E5%258A%25A1%25E6%2599%25BA%25E8%2583%25BD&#x2F;ERP&#x2F;image-20191224112511375.png">
+
+<link rel="canonical" href="http://yoursite.com/2019/12/24/ERP/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>ERP | Yzk's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yzk's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">好好学习，天天向上。</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/24/ERP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/lufei.jpeg">
+      <meta itemprop="name" content="YZK">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yzk's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ERP
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-12-24 11:30:30 / 修改时间：11:36:13" itemprop="dateCreated datePublished" datetime="2019-12-24T11:30:30+08:00">2019-12-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="一、ERP系统原理和实施"><a href="#一、ERP系统原理和实施" class="headerlink" title="一、ERP系统原理和实施"></a>一、ERP系统原理和实施</h1><h2 id="ERP系统"><a href="#ERP系统" class="headerlink" title="ERP系统"></a>ERP系统</h2><h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><p>Enterprise Resource Planning，企业资源计划。</p>
+<h3 id="系统构成"><a href="#系统构成" class="headerlink" title="系统构成"></a>系统构成</h3><ul>
+<li>ERP软件</li>
+<li>业务流程<ul>
+<li>战略计划层、管理控制层、业务操作层</li>
+</ul>
+</li>
+<li>用户</li>
+<li>运行环境（硬件，操作系统等）</li>
+</ul>
+<h3 id="ERP系统在不同的管理层次的作用"><a href="#ERP系统在不同的管理层次的作用" class="headerlink" title="ERP系统在不同的管理层次的作用"></a>ERP系统在不同的管理层次的作用</h3><ul>
+<li><p>业务控制层：降低业务成本；</p>
+</li>
+<li><p>管理控制层：促进实施管理的实施；</p>
+</li>
+<li><p>战略计划层：支持战略计划。</p>
+<a id="more"></a>
+</li>
+</ul>
+<h3 id="ERP系统的优缺点"><a href="#ERP系统的优缺点" class="headerlink" title="ERP系统的优缺点"></a>ERP系统的优缺点</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>定性优点：</p>
+<ul>
+<li>减少库存<strong>—&gt;</strong>降低成本；</li>
+<li>加快订单的处理速度、提高订单的处理质量<strong>—&gt;</strong>降低订单的处理过程成本；</li>
+<li>自动化方式及时采集各种原始数据<strong>—&gt;</strong>提高数据的处理速度和处理质量<strong>—&gt;</strong>降低了财务记账和财务记录保存的成本；</li>
+<li>提高设备的管理水平<strong>—&gt;</strong>充分利用企业的现有设备<strong>—&gt;</strong>可以降低设备投资；</li>
+<li>生产流程更加灵活<strong>—&gt;</strong>可以有效地应对生产过程中各种异常事件的发生；</li>
+<li>提高了生产计划的准确性<strong>—&gt;</strong>降低了生产线上的非常停产时间；</li>
+<li>更加有效地确定生产批量和调度生产<strong>—&gt;</strong>提高生产效率；</li>
+<li>减少生产过程中由于无法及时协调而出现的差错率<strong>—&gt;</strong>提高管理水平；</li>
+<li>降低生产过程的成本。</li>
+</ul>
+<p>定量优点：</p>
+<ul>
+<li>降低库存资金占用15—40%；</li>
+<li>提高库存资金周转次数50—200%；</li>
+<li>降低库存误盘误差，控制在1—2%；</li>
+<li>减少10—30%的装配面积；</li>
+<li>减少10—50%的加班工时；</li>
+<li>减少60—80%的短缺件；</li>
+<li>提高了5—15%的生产率；</li>
+<li>降低了7—12%的成本；</li>
+<li>增加了5—10%的利润。</li>
+</ul>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li><strong>实施复杂</strong>，实施过程具有很大的<strong>风险</strong>；</li>
+<li><strong>与传统系统的集成问题</strong>，接口、数据等如何更好地处理；</li>
+<li><strong>客户定制问题</strong>，如何更好、更快地满足客户的需求；</li>
+<li><strong>实施成本高昂</strong>，大多数ERP系统的实施都超过了预期的成本和项目期限；</li>
+<li>由于组织流程和结构的变化，造成企业内部<strong>员工的消极抵触</strong>；</li>
+<li>经常与企业的<strong>战略冲突</strong>；</li>
+<li>计算机系统的<strong>安全性问题</strong>和<strong>病毒问题</strong>，都会时刻对企业的正常生产经营活动带来严重危害。</li>
+</ul>
+<h2 id="ERP系统的演变"><a href="#ERP系统的演变" class="headerlink" title="ERP系统的演变"></a>ERP系统的演变</h2><p>从本质上讲，ERP系统是一种集成管理模式，这种集成管理模式要求ERP系统作为其核心的支撑技术而出现。所以这种集成管理模式也称为ERP管理模式。</p>
+<ul>
+<li>ERP系统必然出现的<strong>物质基础</strong>和<strong>技术推动力</strong> <ul>
+<li>信息技术的飞速发展，信息系统应用范围的不断扩大</li>
+</ul>
+</li>
+<li>提出ERP系统概念的<strong>外部需求</strong>和<strong>理论基础</strong> <ul>
+<li>CIMS的提出与实践</li>
+</ul>
+</li>
+<li>提出ERP系统概念的<strong>内部需求</strong><ul>
+<li>管理工具的实践促进了管理的不断创新</li>
+</ul>
+</li>
+<li>导致ERP系统出现的<strong>直接前提</strong>和<strong>表现形式</strong> <ul>
+<li>MRP,MRPII的发展</li>
+</ul>
+</li>
+<li>ERP系统在企业得到<strong>快速实施和应用的直接导火索</strong> <ul>
+<li>Y2K问题，BPR思想</li>
+</ul>
+</li>
+</ul>
+<h3 id="MRP和MRP-II的演变"><a href="#MRP和MRP-II的演变" class="headerlink" title="MRP和MRP II的演变"></a>MRP和MRP II的演变</h3><p>开环的MRP（Material Requirements Planning）阶段—&gt;闭环的MRP阶段（<strong>考虑了能力需求计划CRP</strong>）—&gt;制造资源计划（manufacturing resource planning，MRPII,<strong>集成制造和财务</strong>）</p>
+<p>MRP物料需求计划：是一种企业管理软件，实现对企业的库存和生产的有效管理。</p>
+<p>闭环的MRP：闭环MRP系统是一个围绕物料需求计划而建立的系统，除了物料需求计划外，还将<strong>生产能力需求计划</strong>、<strong>车间作业计划</strong>和<strong>采购作业计划</strong>也全部纳入MRP，形成一个<strong>封闭的系统</strong>。</p>
+<p>MRPII制造资源计划：<strong>MRPII是闭环MRP的直接延伸和扩充</strong>，是在全面继承MRP和闭环MRP基础上，把企业宏观决策的经营规划、销售/分销、采购、制造、财务、成本、模拟功能和适应国际化业务需要的多语言、多币制、多税务以及计算机辅助设计（CAD）技术接口等功能纳入，形成的一个全面生 产管理集成化系统。</p>
+<h3 id="ERP系统的成本"><a href="#ERP系统的成本" class="headerlink" title="ERP系统的成本"></a>ERP系统的成本</h3><h4 id="显性成本"><a href="#显性成本" class="headerlink" title="显性成本"></a>显性成本</h4><p>显性成本是指那些<strong>直接用于ERP系统</strong>的、<strong>容易与企业中的其他支出相区别</strong>的成本。</p>
+<ul>
+<li>软件成本：主要包括<strong>购买ERP商业软件包</strong>、<strong>数据库管理系统软件</strong>和<strong>安全管理软件</strong>等。</li>
+<li>硬件成本：包括ERP系统实施过程中购买的<strong>有形设备</strong>和这些设备正常运行所<strong>必需的操作系统软件</strong>。在ERP系统的实施中，需要购买的硬件包括计<strong>算机硬件设备</strong>、<strong>操作系统软件</strong>、<strong>网络设备</strong>和<strong>安全管理设备</strong>。</li>
+</ul>
+<h4 id="隐形成本"><a href="#隐形成本" class="headerlink" title="隐形成本"></a>隐形成本</h4><p>隐性成本是指那些<strong>间接用于ERP系统</strong>的、<strong>不容易与企业中的其他支出相区别</strong>的成本。</p>
+<ul>
+<li>咨询顾问成本。</li>
+<li>培训成本。</li>
+<li>客户定制成本。</li>
+<li>集成和测试成本。</li>
+<li>数据转换成本。</li>
+<li>数据分析成本。</li>
+<li>人员替换成本。</li>
+<li>实施团队不能停止、持续工作成本。</li>
+<li>系统质量成本。</li>
+<li>ERP系统实施后的不景气成本。</li>
+</ul>
+<h2 id="ERP系统的未来"><a href="#ERP系统的未来" class="headerlink" title="ERP系统的未来"></a>ERP系统的未来</h2><p>当前，关于ERP系统的未来有着各种各样的看法和观点，这也表明ERP系统发展和完善的必要性。从当前的主要观点来看，<strong>Gartner公司的ERP II系统</strong>和<strong>Charles Moller的ERP II</strong>概念框架是<strong>两种非常典型的观点</strong>。</p>
+<h4 id="Gartner公司的EPR-II系统"><a href="#Gartner公司的EPR-II系统" class="headerlink" title="Gartner公司的EPR II系统"></a>Gartner公司的EPR II系统</h4><p>与ERP系统相比，ERP II系统的最大优点是<strong>集成了协同电子商务</strong>，允许位于多个地理位置不同的合作伙伴公司以基于电子商务的形式交换信息。</p>
+<p><img src="/2019/12/24/ERP/../../Desktop/%25E7%25AC%2594%25E8%25AE%25B0/%25E7%25A0%2594%25E4%25B8%2580%25E4%25B8%258A/%25E4%25BC%2581%25E4%25B8%259A%25E8%25B5%2584%25E6%25BA%2590%25E8%25AE%25A1%25E5%2588%2592%25E4%25B8%258E%25E5%2595%2586%25E5%258A%25A1%25E6%2599%25BA%25E8%2583%25BD/ERP/image-20191224112511375.png" alt="image-20191224112511375" style="zoom:25%;"></p>
+<h4 id="Charles-Moller的ERP-II概念框架"><a href="#Charles-Moller的ERP-II概念框架" class="headerlink" title="Charles Moller的ERP II概念框架"></a>Charles Moller的ERP II概念框架</h4><p><img src="/2019/12/24/ERP/../../Desktop/%25E7%25AC%2594%25E8%25AE%25B0/%25E7%25A0%2594%25E4%25B8%2580%25E4%25B8%258A/%25E4%25BC%2581%25E4%25B8%259A%25E8%25B5%2584%25E6%25BA%2590%25E8%25AE%25A1%25E5%2588%2592%25E4%25B8%258E%25E5%2595%2586%25E5%258A%25A1%25E6%2599%25BA%25E8%2583%25BD/ERP/image-20191224112608900.png" alt="image-20191224112608900" style="zoom:25%;"></p>
+<h5 id="CRM系统的功能框架示意图"><a href="#CRM系统的功能框架示意图" class="headerlink" title="CRM系统的功能框架示意图"></a>CRM系统的功能框架示意图</h5><p><img src="/2019/12/24/ERP/../../Desktop/%25E7%25AC%2594%25E8%25AE%25B0/%25E7%25A0%2594%25E4%25B8%2580%25E4%25B8%258A/%25E4%25BC%2581%25E4%25B8%259A%25E8%25B5%2584%25E6%25BA%2590%25E8%25AE%25A1%25E5%2588%2592%25E4%25B8%258E%25E5%2595%2586%25E5%258A%25A1%25E6%2599%25BA%25E8%2583%25BD/ERP/image-20191224112650345.png" alt="image-20191224112650345" style="zoom:25%;"></p>
+<h5 id="SCM系统的功能框架示意图"><a href="#SCM系统的功能框架示意图" class="headerlink" title="SCM系统的功能框架示意图"></a>SCM系统的功能框架示意图</h5><p><img src="/2019/12/24/ERP/../../Desktop/%25E7%25AC%2594%25E8%25AE%25B0/%25E7%25A0%2594%25E4%25B8%2580%25E4%25B8%258A/%25E4%25BC%2581%25E4%25B8%259A%25E8%25B5%2584%25E6%25BA%2590%25E8%25AE%25A1%25E5%2588%2592%25E4%25B8%258E%25E5%2595%2586%25E5%258A%25A1%25E6%2599%25BA%25E8%2583%25BD/ERP/image-20191224112723336.png" alt="image-20191224112723336" style="zoom:25%;"></p>
+<h4 id="个人观点"><a href="#个人观点" class="headerlink" title="个人观点"></a>个人观点</h4><p>可以从数据挖掘、数据可视化、人工智能上面展望。</p>
+<h1 id="二、企业资源和基础数据"><a href="#二、企业资源和基础数据" class="headerlink" title="二、企业资源和基础数据"></a>二、企业资源和基础数据</h1>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ERP/" rel="tag"># ERP</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/12/23/disanzhangshuzhijifenyushuzhiweifen/" rel="next" title="disanzhangshuzhijifenyushuzhiweifen">
+                  <i class="fa fa-chevron-left"></i> disanzhangshuzhijifenyushuzhiweifen
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、ERP系统原理和实施"><span class="nav-number">1.</span> <span class="nav-text">一、ERP系统原理和实施</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ERP系统"><span class="nav-number">1.1.</span> <span class="nav-text">ERP系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义："><span class="nav-number">1.1.1.</span> <span class="nav-text">定义：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统构成"><span class="nav-number">1.1.2.</span> <span class="nav-text">系统构成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ERP系统在不同的管理层次的作用"><span class="nav-number">1.1.3.</span> <span class="nav-text">ERP系统在不同的管理层次的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ERP系统的优缺点"><span class="nav-number">1.1.4.</span> <span class="nav-text">ERP系统的优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">缺点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ERP系统的演变"><span class="nav-number">1.2.</span> <span class="nav-text">ERP系统的演变</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MRP和MRP-II的演变"><span class="nav-number">1.2.1.</span> <span class="nav-text">MRP和MRP II的演变</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ERP系统的成本"><span class="nav-number">1.2.2.</span> <span class="nav-text">ERP系统的成本</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#显性成本"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">显性成本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#隐形成本"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">隐形成本</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ERP系统的未来"><span class="nav-number">1.3.</span> <span class="nav-text">ERP系统的未来</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Gartner公司的EPR-II系统"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">Gartner公司的EPR II系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Charles-Moller的ERP-II概念框架"><span class="nav-number">1.3.0.2.</span> <span class="nav-text">Charles Moller的ERP II概念框架</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CRM系统的功能框架示意图"><span class="nav-number">1.3.0.2.1.</span> <span class="nav-text">CRM系统的功能框架示意图</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SCM系统的功能框架示意图"><span class="nav-number">1.3.0.2.2.</span> <span class="nav-text">SCM系统的功能框架示意图</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#个人观点"><span class="nav-number">1.3.0.3.</span> <span class="nav-text">个人观点</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、企业资源和基础数据"><span class="nav-number">2.</span> <span class="nav-text">二、企业资源和基础数据</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="YZK"
+    src="/images/lufei.jpeg">
+  <p class="site-author-name" itemprop="name">YZK</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YZK</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+
+  
+
+</body>
+</html>
