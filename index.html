@@ -207,7 +207,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-08-13 10:41:36 / 修改时间：11:04:34" itemprop="dateCreated datePublished" datetime="2020-08-13T10:41:36+08:00">2020-08-13</time>
+              <time title="创建时间：2020-08-13 10:41:36 / 修改时间：16:31:19" itemprop="dateCreated datePublished" datetime="2020-08-13T10:41:36+08:00">2020-08-13</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -235,31 +235,15 @@
           <h4 id="1-前提条件"><a href="#1-前提条件" class="headerlink" title="1.前提条件"></a>1.前提条件</h4><p>配置好docker中的ssh服务，并映射好对应的端口。</p>
 <h4 id="2-PyCharm设置"><a href="#2-PyCharm设置" class="headerlink" title="2.PyCharm设置"></a>2.PyCharm设置</h4><ul>
 <li><p>在编译器设置中选择新的编译器；</p>
-<p><img src="/2020/08/13/pycharm-ssh-docker/image-20200813104838876.png" alt="image-20200813104838876"></p>
-</li>
-<li><p>选择ssh编译器，并配置好ssh</p>
-<p><img src="/2020/08/13/pycharm-ssh-docker/image-20200813105030344.png" alt="image-20200813105030344"></p>
-</li>
-<li><p>输入远程服务器的ssh密码</p>
-<p><img src="/2020/08/13/pycharm-ssh-docker/image-20200813105137020.png" alt="image-20200813105137020"></p>
-</li>
-<li><p>选择编译器文件位置</p>
-<p><img src="/2020/08/13/pycharm-ssh-docker/image-20200813105436051.png" alt="image-20200813105436051"></p>
-<p>如果不知道编译器位置，可以在服务器终端输入：<code>which python</code> 获取</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(base) root@a4f81eecc880:~# which python</span><br><span class="line">/opt/conda/bin/python</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>设置同步至服务器的目录位置，可以勾选自动同步，这样就不用每次运行都手动同步了。</p>
-<p><img src="/2020/08/13/pycharm-ssh-docker/image-20200813105911056.png" alt="image-20200813105911056"></p>
-<p>没有勾选也可以在代码界面进行修改</p>
-<p><img src="/2020/08/13/pycharm-ssh-docker/image-20200813110207974.png" alt="image-20200813110207974"></p>
-<p>点击完成后，可以看到我们已经获取了远程服务器上的python编译器环境</p>
-<p><img src="/2020/08/13/pycharm-ssh-docker/image-20200813110037405.png" alt="image-20200813110037405"></p>
-</li>
-<li><p>最后就可以愉快的在本地码代码，在服务器上运行啦～</p>
-<p><img src="/2020/08/13/pycharm-ssh-docker/image-20200813110422718.png" alt="image-20200813110422718"></p>
-</li>
-</ul>
-
+<p><img src="/2020/08/13/pycharm-ssh-docker/image-20200813104838876.png" alt="image-20200813104838876"></p></li></ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/08/13/pycharm-ssh-docker/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -383,7 +367,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-13 10:39:35" itemprop="dateModified" datetime="2020-08-13T10:39:35+08:00">2020-08-13</time>
+                <time title="修改时间：2020-08-13 16:30:54" itemprop="dateModified" datetime="2020-08-13T16:30:54+08:00">2020-08-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -410,32 +394,16 @@
       
           <h2 id="镜像操作"><a href="#镜像操作" class="headerlink" title="镜像操作"></a>镜像操作</h2><h3 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h3><p>从公有库获取镜像，类似于从GitHub拉取项目，当然也可以导入自定义镜像。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">查找镜像</span></span><br><span class="line">docker search 镜像名</span><br><span class="line"><span class="meta">#</span><span class="bash">拉取镜像</span></span><br><span class="line">docker pull 镜像名</span><br><span class="line"><span class="meta">#</span><span class="bash">查看本地镜像</span></span><br><span class="line">docker images</span><br></pre></td></tr></table></figure>
-<h3 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi [imageId]</span><br></pre></td></tr></table></figure>
-<h2 id="容器操作"><a href="#容器操作" class="headerlink" title="容器操作"></a>容器操作</h2><h3 id="生成容器"><a href="#生成容器" class="headerlink" title="生成容器"></a>生成容器</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it -p hostIp:containerIp --name name imageID [option]</span><br></pre></td></tr></table></figure>
-<ul>
-<li>run：生成容器</li>
-<li>-i：以标准输入与容器交互</li>
-<li>-t：为容器分配一个伪终端，可简写为-it</li>
-<li>-p：将容器端口映射到宿主机端口，一定要映射好端口，后期想修改只有重新生成容器或者修改docker配置文件，代价是重启整个docker服务 </li>
-<li>—name：指定容器名字；imageID：镜像的id</li>
-<li>[option]：与容器交互的方式，如bash</li>
-</ul>
-<p><strong>注：-it这一指令会直接生成并进入容器，并在退出后停止容器，如果想让生成的容器后台执行的话，需使用指令-d，也可以简写-itd</strong></p>
-<h3 id="进入后台运行的容器"><a href="#进入后台运行的容器" class="headerlink" title="进入后台运行的容器"></a>进入后台运行的容器</h3><p> -<strong>d </strong>是在让容器在后台运行，那么如何进入后台的容器呢？这里我们需要用的<strong>exec</strong>指令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it [containerId][containerName] bash</span><br><span class="line"><span class="meta">#</span><span class="bash">退出容器</span></span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
-<p>注：使用exec进入容器退出后，容器依旧会在后台运行</p>
-<h3 id="启动-停止容器"><a href="#启动-停止容器" class="headerlink" title="启动/停止容器"></a>启动/停止容器</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker start [containerId][cotainerName]</span><br><span class="line">docker stop [containerId][cotainerName]</span><br></pre></td></tr></table></figure>
-<h3 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm -f [containerId][cotainerName]</span><br></pre></td></tr></table></figure>
-<ul>
-<li>rm：删除容器指令</li>
-<li>-f：强制执行，这在容器没有停止的时候可以使用</li>
-</ul>
-<h3 id="通过容器生成新的镜像"><a href="#通过容器生成新的镜像" class="headerlink" title="通过容器生成新的镜像"></a>通过容器生成新的镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker commit [option] containerId [imageName[:TAG]]</span><br><span class="line"><span class="meta">#</span><span class="bash">示例</span></span><br><span class="line">docker commit -a "yzk" -m "示例" a4f81eecc880 myOS:v1.0</span><br></pre></td></tr></table></figure>
-<ul>
-<li>-a：作者</li>
-<li>-m：说明</li>
-</ul>
-
+<h3 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker rmi [imageId]</span><br><span class="line"><span class="meta">#</span><span class="bash">强制删除</span></span><br><span class="line">docker rmi -f [imageId]</span><br></pre></td></tr></table></figure>
+<h2 id="容器操作"><a href="#容器操作" class="headerlink" title="容器操作"></a>容器操作</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/08/12/docker-commands/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
