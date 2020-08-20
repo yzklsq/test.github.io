@@ -4,7 +4,7 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.0.0">
+<meta name="generator" content="Hexo 4.2.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -51,24 +51,26 @@
 </script>
 
   <meta name="description" content="1.前提条件配置好docker中的ssh服务，并映射好对应的端口。 2.PyCharm设置 在编译器设置中选择新的编译器；">
-<meta name="keywords" content="Docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PyCharm通过ssh连接docker容器">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;08&#x2F;13&#x2F;pycharm-ssh-docker&#x2F;index.html">
+<meta property="og:url" content="http://yoursite.com/2020/08/13/pycharm-ssh-docker/index.html">
 <meta property="og:site_name" content="Yzk&#39;s Blog">
 <meta property="og:description" content="1.前提条件配置好docker中的ssh服务，并映射好对应的端口。 2.PyCharm设置 在编译器设置中选择新的编译器；">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;08&#x2F;13&#x2F;pycharm-ssh-docker&#x2F;image-20200813104838876.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;08&#x2F;13&#x2F;pycharm-ssh-docker&#x2F;image-20200813105030344.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;08&#x2F;13&#x2F;pycharm-ssh-docker&#x2F;image-20200813105137020.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;08&#x2F;13&#x2F;pycharm-ssh-docker&#x2F;image-20200813105436051.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;08&#x2F;13&#x2F;pycharm-ssh-docker&#x2F;image-20200813105911056.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;08&#x2F;13&#x2F;pycharm-ssh-docker&#x2F;image-20200813110207974.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;08&#x2F;13&#x2F;pycharm-ssh-docker&#x2F;image-20200813110037405.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;08&#x2F;13&#x2F;pycharm-ssh-docker&#x2F;image-20200813110422718.png">
-<meta property="og:updated_time" content="2020-08-13T08:33:28.107Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2020/08/13/pycharm-ssh-docker/image-20200813104838876.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/13/pycharm-ssh-docker/image-20200813105030344.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/13/pycharm-ssh-docker/image-20200813105137020.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/13/pycharm-ssh-docker/image-20200813105436051.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/13/pycharm-ssh-docker/image-20200813105911056.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/13/pycharm-ssh-docker/image-20200813110207974.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/13/pycharm-ssh-docker/image-20200813110037405.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/13/pycharm-ssh-docker/image-20200813110422718.png">
+<meta property="article:published_time" content="2020-08-13T02:41:36.000Z">
+<meta property="article:modified_time" content="2020-08-13T08:33:28.107Z">
+<meta property="article:author" content="YZK">
+<meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;08&#x2F;13&#x2F;pycharm-ssh-docker&#x2F;image-20200813104838876.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/08/13/pycharm-ssh-docker/image-20200813104838876.png">
 
 <link rel="canonical" href="http://yoursite.com/2020/08/13/pycharm-ssh-docker/">
 
@@ -396,7 +398,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">YZK</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
@@ -424,9 +426,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/pisces.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 
