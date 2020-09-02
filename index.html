@@ -183,6 +183,93 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/02/svn-config-method/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/lufei.jpeg">
+      <meta itemprop="name" content="YZK">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yzk's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/02/svn-config-method/" class="post-title-link" itemprop="url">svn-config-method</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-02 15:38:26 / 修改时间：16:47:02" itemprop="dateCreated datePublished" datetime="2020-09-02T15:38:26+08:00">2020-09-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>SVN是subversion的缩写，是一个开放源代码的版本控制系统，通过采用分支管理系统的高效管理，简而言之就是用于多个人共同开发同一个项目，实现共享资源，实现最终集中式的管理。</p>
+<h1 id="服务器端配置"><a href="#服务器端配置" class="headerlink" title="服务器端配置"></a>服务器端配置</h1><p><a href="https://blog.csdn.net/xu12387/article/details/93050196" target="_blank" rel="noopener">服务器端配置（转）</a></p>
+<h1 id="客户端使用方法"><a href="#客户端使用方法" class="headerlink" title="客户端使用方法"></a>客户端使用方法</h1><p><strong>1.下载服务器端代码到本地</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn checkout svn://ip/your_repo [本地仓库路径] --username=username --password=passwd</span><br></pre></td></tr></table></figure>
+<p>如果服务器上没有代码，可以导入代码到服务器上</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">本地项目路径可以不是仓库路径</span></span><br><span class="line">svn import [本地项目路径] svn://ip//your_repo --username=username --password=passwd -m "说明描述"</span><br><span class="line"><span class="meta">#</span><span class="bash">例子</span></span><br><span class="line">svn import /Users/projects/PycharmProjects/anacondaTest svn://127.0.0.1:3690/repo/test_svn -m "svn测试2"</span><br></pre></td></tr></table></figure>
+<p>注：第一次输入了用户名和密码，后面可以不用再输入了</p>
+<p><strong>2.添加/删除文件（夹）到服务器端</strong></p>
+<p>这是将本地仓库的文件（夹）添加到服务器仓库里。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">首先要<span class="built_in">cd</span>到仓库目录</span></span><br><span class="line">cd [仓库目录]</span><br><span class="line"><span class="meta">#</span><span class="bash">添加项目到仓库</span></span><br><span class="line">svn add [文件/文件夹]</span><br><span class="line"><span class="meta">#</span><span class="bash">添加目录下所有项目</span></span><br><span class="line">svn add *</span><br><span class="line"><span class="meta">#</span><span class="bash">删除操作</span></span><br><span class="line">svn delete [文件/文件夹]</span><br><span class="line"><span class="meta">#</span><span class="bash">提交操作，每次操作都需这一步，否则不会提交到服务器端</span></span><br><span class="line">svn commit -m "描述说明"</span><br></pre></td></tr></table></figure>
+<p><strong>3.代码同步至服务器</strong></p>
+<p>将本地的代码修改同步到服务器端。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">首先<span class="built_in">cd</span>到项目目录</span></span><br><span class="line">cd [项目目录]</span><br><span class="line"><span class="meta">#</span><span class="bash">提交操作，没错，还是commit(也可以简写为ci)</span></span><br><span class="line">svn commit -m "描述说明"</span><br></pre></td></tr></table></figure>
+<p>注：这是修改，并不包括添加/删除操作</p>
+<p><strong>4.更新本地仓库与版本回退</strong></p>
+<p>这是将本地仓库文件夹更新为服务器上指定版本的仓库文件夹，也就说服务器上指定版本的仓库是什么样，更新后本地仓库就是什么样（为啥本地同步服务器就这么麻烦呢）。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="built_in">cd</span>到想要更新的项目文件夹</span></span><br><span class="line">cd [项目目录]</span><br><span class="line"><span class="meta">#</span><span class="bash">更新本地仓库，默认为最新版本仓库</span></span><br><span class="line">svn update</span><br><span class="line"><span class="meta">#</span><span class="bash">更新为指定版本仓库，这就实现了版本回退</span></span><br><span class="line">svn update -r [版本号]</span><br></pre></td></tr></table></figure>
+<p><strong>注：从这几个操作步骤来看，svn的操作是以当前文件夹目录作为作用域的，也就是说svn的操作只在当前文件及其包含的子文件夹内起作用</strong></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/20/terminal-stty/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -788,7 +875,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -801,7 +888,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
