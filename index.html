@@ -285,7 +285,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-09-22 15:00:25 / 修改时间：15:10:31" itemprop="dateCreated datePublished" datetime="2020-09-22T15:00:25+08:00">2020-09-22</time>
+              <time title="创建时间：2020-09-22 15:00:25 / 修改时间：21:32:19" itemprop="dateCreated datePublished" datetime="2020-09-22T15:00:25+08:00">2020-09-22</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -314,7 +314,54 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u user -p</span><br></pre></td></tr></table></figure>
 <p><strong>连接远程数据库</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -h ip -u user -p</span><br></pre></td></tr></table></figure>
-<p><strong>授权超级用户</strong><br>grant all privileges on <em>.</em> to ‘tangnanbing’@’%’ identified by ‘1qaz@WSX’ with grant option;<br><strong>查看都有哪些库</strong><br> show databases;<br><strong>查看某个库的表</strong><br>use db; show tables \G;<br><strong>查看表的字段</strong><br>desc tb;<br><strong>查看建表语句</strong><br>show create table tb;<br><strong>当前是哪个用户</strong><br>select user();<br><strong>当前库</strong><br> select database();<br><strong>创建库</strong><br> create database db1;<br><strong>创建表</strong><br> create table t1 (id int, name char(40)，adress varchar(30));<br><strong>查看数据库版本</strong><br>select version();<br><strong>查看mysql状态</strong><br>show status;<br><strong>修改mysql参数</strong><br>show variables like ‘max_connect%’; set global max_connect_errors = 1000;<br><strong>查看mysql队列</strong><br>show processlist;<br>select <em> from information_schema.processlist where info is not null;<br>sleep的可以忽略，qurey查询的才有<br><strong>创建普通用户并授权</strong><br>grant all on </em>.<em> to databases1.user1 identified by ‘123456’;<br>grant all on db1.</em> to ‘user2’@’10.0.2.100’ identified by ‘111222’;<br>grant all on db1.<em> to ‘user3’@’%’ identified by ‘231222’;insert into tb1 (id,name) values(1,’aming’);<br><strong>更改密码</strong><br>UPDATE mysql.user SET password=PASSWORD(“newpwd”) WHERE user=’username’ ;<br><strong>查询</strong><br>select count(</em>) from mysql.user; select <em> from mysql.db; select </em> from mysql.db where host like ‘10.0.%’;<br><strong>插入</strong><br>update db1.t1 set name=’aaa’ where id=1;<br><strong>清空表</strong><br>truncate table db1.t1;<br><strong>删除表</strong><br>drop table db1.t1;<br><strong>删除数据库</strong><br>drop database db1;<br><strong>修复表</strong><br>repair table tb1 [use frm];<br><strong>查看权限</strong><br>show grants for root@’localhost’;<br><strong>查询表中的字段</strong><br>echo “select user,host,password from mysql.user” |mysql -uroot -ppwd<br><strong>将查询到的信息导出到文件中</strong><br>mysql -uroot -p1234556 -e “select user,host,password into outfile ‘/home/mysql/1.txt’ from mysql.user;”；</p>
+<p><strong>授权超级用户</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant all privileges on *.* to &#39;tangnanbing&#39;@&#39;%&#39; identified by &#39;1qaz@WSX&#39; with grant option;</span><br></pre></td></tr></table></figure>
+<p><strong>查看都有哪些库</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show databases;</span><br></pre></td></tr></table></figure>
+<p><strong>查看某个库的表</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use db; show tables \G;</span><br></pre></td></tr></table></figure>
+<p><strong>查看表的字段</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">desc table_name;</span><br></pre></td></tr></table></figure>
+<p><strong>查看建表语句</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show create table tb;</span><br></pre></td></tr></table></figure>
+<p><strong>当前是哪个用户</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select user();</span><br></pre></td></tr></table></figure>
+<p><strong>当前库</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select database();</span><br></pre></td></tr></table></figure>
+<p><strong>创建库</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create database db1;</span><br></pre></td></tr></table></figure>
+<p><strong>创建表</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table t1 (id int, name char(40)，adress varchar(30));</span><br></pre></td></tr></table></figure>
+<p><strong>查看数据库版本</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select version();</span><br></pre></td></tr></table></figure>
+<p><strong>查看mysql状态</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show status;</span><br></pre></td></tr></table></figure>
+<p><strong>修改mysql参数</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show variables like &#39;max_connect%&#39;; set global max_connect_errors &#x3D; 1000;</span><br></pre></td></tr></table></figure>
+<p><strong>查看mysql队列</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">show processlist; </span><br><span class="line">select * from information_schema.processlist where info is not null;</span><br></pre></td></tr></table></figure>
+<p>sleep的可以忽略，qurey查询的才有<br><strong>创建普通用户并授权</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grant all on *.* to databases1.user1 identified by &#39;123456&#39;; </span><br><span class="line">grant all on db1.* to &#39;user2&#39;@&#39;10.0.2.100&#39; identified by &#39;111222&#39;; </span><br><span class="line">grant all on db1.* to &#39;user3&#39;@&#39;%&#39; identified by &#39;231222&#39;;insert into tb1 (id,name) values(1,&#39;aming&#39;);</span><br></pre></td></tr></table></figure>
+<p><strong>更改密码</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE mysql.user SET password&#x3D;PASSWORD(&quot;newpwd&quot;) WHERE user&#x3D;&#39;username&#39; ;</span><br></pre></td></tr></table></figure>
+<p><strong>查询</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select count(*) from mysql.user; select * from mysql.db; select * from mysql.db where host like &#39;10.0.%&#39;;</span><br></pre></td></tr></table></figure>
+<p><strong>插入</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update db1.t1 set name&#x3D;&#39;aaa&#39; where id&#x3D;1;</span><br></pre></td></tr></table></figure>
+<p><strong>清空表</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">truncate table db1.t1;</span><br></pre></td></tr></table></figure>
+<p><strong>删除表</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop table db1.t1;</span><br></pre></td></tr></table></figure>
+<p><strong>删除数据库</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop database db1;</span><br></pre></td></tr></table></figure>
+<p><strong>修复表</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">repair table tb1 [use frm];</span><br></pre></td></tr></table></figure>
+<p><strong>查看权限</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show grants for root@&#39;localhost&#39;;</span><br></pre></td></tr></table></figure>
+<p><strong>查询表中的字段</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;select user,host,password from mysql.user&quot; |mysql -uroot -ppwd</span><br></pre></td></tr></table></figure>
+<p><strong>将查询到的信息导出到文件中</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p1234556 -e &quot;select user,host,password into outfile &#39;&#x2F;home&#x2F;mysql&#x2F;1.txt&#39; from mysql.user;&quot;；</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -513,10 +560,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-08-20 17:33:27 / 修改时间：17:37:19" itemprop="dateCreated datePublished" datetime="2020-08-20T17:33:27+08:00">2020-08-20</time>
+              <time title="创建时间：2020-08-20 17:33:27" itemprop="dateCreated datePublished" datetime="2020-08-20T17:33:27+08:00">2020-08-20</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-22 21:35:20" itemprop="dateModified" datetime="2020-09-22T21:35:20+08:00">2020-09-22</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -541,7 +594,7 @@
 
       
           <p><strong>设置终端显示及输入列数，避免输入长度太长将前面显示内容覆盖</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stty cols [col]</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">注意行列要一起设置，否则会没有效果</span></span><br><span class="line">stty cols [col]</span><br><span class="line">stty rows [row]</span><br><span class="line"><span class="meta">#</span><span class="bash">显示当前终端行列设置</span></span><br><span class="line">stty size</span><br></pre></td></tr></table></figure>
 
       
     </div>
