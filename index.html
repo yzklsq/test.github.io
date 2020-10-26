@@ -183,6 +183,105 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/26/mongoDB-config/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/lufei.jpeg">
+      <meta itemprop="name" content="YZK">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yzk's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/26/mongoDB-config/" class="post-title-link" itemprop="url">mongoDB数据库配置及注意事项</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-10-26 11:19:10 / 修改时间：11:33:53" itemprop="dateCreated datePublished" datetime="2020-10-26T11:19:10+08:00">2020-10-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>mongod</strong>是数据库本身启动配置的命令</p>
+<p><strong>mongo</strong>是数据库shell的命令</p>
+<p><strong>步骤</strong>：</p>
+<ul>
+<li><p>添加mongoDB的bin文件到系统路径</p>
+<p>在.bash_profile中添加：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PATH=“/usr/local/mongodb/bin：$PATH</span><br><span class="line">export PATH</span><br><span class="line"><span class="meta">#</span><span class="bash">执行配置文件</span></span><br><span class="line">source ~/.bash_profile</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为mongoDB添加配置文件，在/usr/local/etc/mongod.conf中添加以下内容：</p>
+<p><strong>注意大小写敏感</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">后台运行</span></span><br><span class="line">fork=true</span><br><span class="line"><span class="meta">#</span><span class="bash">数据库路径</span></span><br><span class="line">dbpath=/users/zky/data/db</span><br><span class="line"><span class="meta">#</span><span class="bash">ip&amp;端口号</span></span><br><span class="line">bind_ip=127.0.0.1</span><br><span class="line">port=27017</span><br><span class="line"><span class="meta">#</span><span class="bash">日志文件</span></span><br><span class="line">logpath=/users/zky/data/logs/mongodb.log</span><br><span class="line">logappend=true</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">是否为授权模式</span></span><br><span class="line"><span class="meta">#</span><span class="bash">auth=<span class="literal">true</span></span></span><br><span class="line">noauth=true</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 需要在sudo下执行</span></span><br><span class="line">sudo mongod -f [配置文件路径]</span><br><span class="line"><span class="meta">#</span><span class="bash"> 或者</span></span><br><span class="line">suod mongod --config [配置文件路径]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关闭mongoDB</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入mongo的shell</span></span><br><span class="line">mongo</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> use admin</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.shutdownServer()</span></span><br></pre></td></tr></table></figure>
+<p>注意千万不要kill或者直接关机，会发生数据库重新启动不了的情况！</p>
+</li>
+</ul>
+<p><strong>因kill进程或者关机前为关闭mongoDB发生的错误解决方法</strong></p>
+<ul>
+<li><p>删掉mongod.lock文件，以及清楚log日志文件内容；</p>
+</li>
+<li><p>以修复命令启动mongo</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mongod -f [配置文件路径] --repair</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>以正常命令启动mongo</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/22/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -926,92 +1025,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/12/docker-commands/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/lufei.jpeg">
-      <meta itemprop="name" content="YZK">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yzk's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/12/docker-commands/" class="post-title-link" itemprop="url">Docker常用命令</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-12 22:07:52" itemprop="dateCreated datePublished" datetime="2020-08-12T22:07:52+08:00">2020-08-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-19 10:23:54" itemprop="dateModified" datetime="2020-08-19T10:23:54+08:00">2020-08-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
-                    <span itemprop="name">笔记</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="镜像操作"><a href="#镜像操作" class="headerlink" title="镜像操作"></a>镜像操作</h2><h3 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h3><p>从公有库获取镜像，类似于从GitHub拉取项目，当然也可以导入自定义镜像。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">查找镜像</span></span><br><span class="line">docker search 镜像名</span><br><span class="line"><span class="meta">#</span><span class="bash">拉取镜像</span></span><br><span class="line">docker pull 镜像名</span><br><span class="line"><span class="meta">#</span><span class="bash">查看本地镜像</span></span><br><span class="line">docker images</span><br></pre></td></tr></table></figure>
-<h3 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker rmi [imageId]</span><br><span class="line"><span class="meta">#</span><span class="bash">强制删除</span></span><br><span class="line">docker rmi -f [imageId]</span><br></pre></td></tr></table></figure>
-<h2 id="容器操作"><a href="#容器操作" class="headerlink" title="容器操作"></a>容器操作</h2>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/08/12/docker-commands/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1062,7 +1075,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1075,7 +1088,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
