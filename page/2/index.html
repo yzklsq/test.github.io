@@ -206,10 +206,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-08-12 22:12:29 / 修改时间：22:28:37" itemprop="dateCreated datePublished" datetime="2020-08-12T22:12:29+08:00">2020-08-12</time>
+              <time title="创建时间：2020-08-12 22:12:29" itemprop="dateCreated datePublished" datetime="2020-08-12T22:12:29+08:00">2020-08-12</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-28 15:16:11" itemprop="dateModified" datetime="2020-10-28T15:16:11+08:00">2020-10-28</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -233,11 +239,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="1、上传文件"><a href="#1、上传文件" class="headerlink" title="1、上传文件"></a>1、上传文件</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -P port localAdress user@hostIP:hostAdress</span><br></pre></td></tr></table></figure>
+          <h2 id="SCP上传下载文件"><a href="#SCP上传下载文件" class="headerlink" title="SCP上传下载文件"></a>SCP上传下载文件</h2><h4 id="1、上传文件"><a href="#1、上传文件" class="headerlink" title="1、上传文件"></a>1、上传文件</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -P port localAdress user@hostIP:hostAdress</span><br></pre></td></tr></table></figure>
 <p><strong>指定端口号-P必须大写</strong></p>
 <h4 id="2、上传文件夹"><a href="#2、上传文件夹" class="headerlink" title="2、上传文件夹"></a>2、上传文件夹</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -P port -r localAdress user@hostIP:hostAdress</span><br></pre></td></tr></table></figure>
 <h4 id="3、下载文件"><a href="#3、下载文件" class="headerlink" title="3、下载文件"></a>3、下载文件</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -P port user@hostIP:hostAdress localAdress</span><br></pre></td></tr></table></figure>
 <h4 id="4、下载文件夹"><a href="#4、下载文件夹" class="headerlink" title="4、下载文件夹"></a>4、下载文件夹</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -P port -r user@hostIP:hostAdress localAdress</span><br></pre></td></tr></table></figure>
+<h2 id="SFTP上传下载文件"><a href="#SFTP上传下载文件" class="headerlink" title="SFTP上传下载文件"></a>SFTP上传下载文件</h2><h4 id="1、连接远程服务器"><a href="#1、连接远程服务器" class="headerlink" title="1、连接远程服务器"></a>1、连接远程服务器</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> -P为大写</span></span><br><span class="line">sftp -P [port] user@ip</span><br></pre></td></tr></table></figure>
+<h4 id="2、上传与下载"><a href="#2、上传与下载" class="headerlink" title="2、上传与下载"></a>2、上传与下载</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 上传文件</span></span><br><span class="line"><span class="meta">sftp&gt;</span><span class="bash">put [本地文件位置] [服务器文件位置]</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 上传文件夹</span></span><br><span class="line"><span class="meta">sftp&gt;</span><span class="bash">put -r [本地文件位置] [服务器文件位置]</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 下载文件</span></span><br><span class="line"><span class="meta">sftp&gt;</span><span class="bash">get [服务器文件位置] [本地文件位置] </span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 下载文件夹</span></span><br><span class="line"><span class="meta">sftp&gt;</span><span class="bash">get -r [服务器文件位置] [本地文件位置]</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
