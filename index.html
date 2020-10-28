@@ -183,6 +183,84 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/28/python-try-except/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/lufei.jpeg">
+      <meta itemprop="name" content="YZK">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yzk's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/28/python-try-except/" class="post-title-link" itemprop="url">Python:try-execpt打印错误信息</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-10-28 14:54:11 / 修改时间：15:02:43" itemprop="dateCreated datePublished" datetime="2020-10-28T14:54:11+08:00">2020-10-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>Python的异常处理</strong></p>
+<ul>
+<li>所有错误的基类BaseException：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>):</span><br><span class="line">	<span class="keyword">try</span>:</span><br><span class="line">    st = <span class="string">'&#123;"id":1&#125;'</span></span><br><span class="line">    print(st[<span class="string">"id"</span>])</span><br><span class="line">  <span class="keyword">except</span> BaseException <span class="keyword">as</span> err:    </span><br><span class="line">    print(err)</span><br><span class="line"><span class="comment"># 错误打印结果</span></span><br><span class="line">string indices must be integers</span><br><span class="line">string indices must be integers</span><br></pre></td></tr></table></figure>
+<ul>
+<li>traceback模块，该模块打印信息就是平时程序出错显示的红色信息</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>):</span><br><span class="line">	<span class="keyword">try</span>:</span><br><span class="line">    st = <span class="string">'&#123;"id":1&#125;'</span></span><br><span class="line">    print(st[<span class="string">"id"</span>])</span><br><span class="line">  <span class="keyword">except</span> BaseException <span class="keyword">as</span> err:    </span><br><span class="line">    <span class="keyword">import</span> traceback</span><br><span class="line">    print(traceback.print_exc())</span><br><span class="line"><span class="comment"># 错误打印结果</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"a.py"</span>, line <span class="number">128</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    print(st[<span class="string">"id"</span>])</span><br><span class="line">TypeError: string indices must be integers</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"a.py"</span>, line <span class="number">128</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    print(st[<span class="string">"id"</span>])</span><br><span class="line">TypeError: string indices must be integers</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/26/mongoDB-config/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -206,10 +284,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-10-26 11:19:10 / 修改时间：11:33:53" itemprop="dateCreated datePublished" datetime="2020-10-26T11:19:10+08:00">2020-10-26</time>
+              <time title="创建时间：2020-10-26 11:19:10" itemprop="dateCreated datePublished" datetime="2020-10-26T11:19:10+08:00">2020-10-26</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-28 15:03:12" itemprop="dateModified" datetime="2020-10-28T15:03:12+08:00">2020-10-28</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -236,34 +320,14 @@
           <p><strong>mongod</strong>是数据库本身启动配置的命令</p>
 <p><strong>mongo</strong>是数据库shell的命令</p>
 <p><strong>步骤</strong>：</p>
-<ul>
-<li><p>添加mongoDB的bin文件到系统路径</p>
-<p>在.bash_profile中添加：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PATH=“/usr/local/mongodb/bin：$PATH</span><br><span class="line">export PATH</span><br><span class="line"><span class="meta">#</span><span class="bash">执行配置文件</span></span><br><span class="line">source ~/.bash_profile</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>为mongoDB添加配置文件，在/usr/local/etc/mongod.conf中添加以下内容：</p>
-<p><strong>注意大小写敏感</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">后台运行</span></span><br><span class="line">fork=true</span><br><span class="line"><span class="meta">#</span><span class="bash">数据库路径</span></span><br><span class="line">dbpath=/users/zky/data/db</span><br><span class="line"><span class="meta">#</span><span class="bash">ip&amp;端口号</span></span><br><span class="line">bind_ip=127.0.0.1</span><br><span class="line">port=27017</span><br><span class="line"><span class="meta">#</span><span class="bash">日志文件</span></span><br><span class="line">logpath=/users/zky/data/logs/mongodb.log</span><br><span class="line">logappend=true</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">是否为授权模式</span></span><br><span class="line"><span class="meta">#</span><span class="bash">auth=<span class="literal">true</span></span></span><br><span class="line">noauth=true</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行配置文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 需要在sudo下执行</span></span><br><span class="line">sudo mongod -f [配置文件路径]</span><br><span class="line"><span class="meta">#</span><span class="bash"> 或者</span></span><br><span class="line">suod mongod --config [配置文件路径]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>关闭mongoDB</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入mongo的shell</span></span><br><span class="line">mongo</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> use admin</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.shutdownServer()</span></span><br></pre></td></tr></table></figure>
-<p>注意千万不要kill或者直接关机，会发生数据库重新启动不了的情况！</p>
-</li>
-</ul>
-<p><strong>因kill进程或者关机前为关闭mongoDB发生的错误解决方法</strong></p>
-<ul>
-<li><p>删掉mongod.lock文件，以及清楚log日志文件内容；</p>
-</li>
-<li><p>以修复命令启动mongo</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mongod -f [配置文件路径] --repair</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>以正常命令启动mongo</p>
-</li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/26/mongoDB-config/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -382,10 +446,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-09-22 15:00:25 / 修改时间：21:32:19" itemprop="dateCreated datePublished" datetime="2020-09-22T15:00:25+08:00">2020-09-22</time>
+              <time title="创建时间：2020-09-22 15:00:25" itemprop="dateCreated datePublished" datetime="2020-09-22T15:00:25+08:00">2020-09-22</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-28 15:04:02" itemprop="dateModified" datetime="2020-10-28T15:04:02+08:00">2020-10-28</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -415,53 +485,14 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -h ip -u user -p</span><br></pre></td></tr></table></figure>
 <p><strong>授权超级用户</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant all privileges on *.* to &#39;tangnanbing&#39;@&#39;%&#39; identified by &#39;1qaz@WSX&#39; with grant option;</span><br></pre></td></tr></table></figure>
-<p><strong>查看都有哪些库</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show databases;</span><br></pre></td></tr></table></figure>
-<p><strong>查看某个库的表</strong> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use db; show tables \G;</span><br></pre></td></tr></table></figure>
-<p><strong>查看表的字段</strong> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">desc table_name;</span><br></pre></td></tr></table></figure>
-<p><strong>查看建表语句</strong> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show create table tb;</span><br></pre></td></tr></table></figure>
-<p><strong>当前是哪个用户</strong> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select user();</span><br></pre></td></tr></table></figure>
-<p><strong>当前库</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select database();</span><br></pre></td></tr></table></figure>
-<p><strong>创建库</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create database db1;</span><br></pre></td></tr></table></figure>
-<p><strong>创建表</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table t1 (id int, name char(40)，adress varchar(30));</span><br></pre></td></tr></table></figure>
-<p><strong>查看数据库版本</strong> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select version();</span><br></pre></td></tr></table></figure>
-<p><strong>查看mysql状态</strong> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show status;</span><br></pre></td></tr></table></figure>
-<p><strong>修改mysql参数</strong> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show variables like &#39;max_connect%&#39;; set global max_connect_errors &#x3D; 1000;</span><br></pre></td></tr></table></figure>
-<p><strong>查看mysql队列</strong> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">show processlist; </span><br><span class="line">select * from information_schema.processlist where info is not null;</span><br></pre></td></tr></table></figure>
-<p>sleep的可以忽略，qurey查询的才有<br><strong>创建普通用户并授权</strong> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grant all on *.* to databases1.user1 identified by &#39;123456&#39;; </span><br><span class="line">grant all on db1.* to &#39;user2&#39;@&#39;10.0.2.100&#39; identified by &#39;111222&#39;; </span><br><span class="line">grant all on db1.* to &#39;user3&#39;@&#39;%&#39; identified by &#39;231222&#39;;insert into tb1 (id,name) values(1,&#39;aming&#39;);</span><br></pre></td></tr></table></figure>
-<p><strong>更改密码</strong> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE mysql.user SET password&#x3D;PASSWORD(&quot;newpwd&quot;) WHERE user&#x3D;&#39;username&#39; ;</span><br></pre></td></tr></table></figure>
-<p><strong>查询</strong> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select count(*) from mysql.user; select * from mysql.db; select * from mysql.db where host like &#39;10.0.%&#39;;</span><br></pre></td></tr></table></figure>
-<p><strong>插入</strong> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update db1.t1 set name&#x3D;&#39;aaa&#39; where id&#x3D;1;</span><br></pre></td></tr></table></figure>
-<p><strong>清空表</strong> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">truncate table db1.t1;</span><br></pre></td></tr></table></figure>
-<p><strong>删除表</strong> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop table db1.t1;</span><br></pre></td></tr></table></figure>
-<p><strong>删除数据库</strong> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop database db1;</span><br></pre></td></tr></table></figure>
-<p><strong>修复表</strong> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">repair table tb1 [use frm];</span><br></pre></td></tr></table></figure>
-<p><strong>查看权限</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show grants for root@&#39;localhost&#39;;</span><br></pre></td></tr></table></figure>
-<p><strong>查询表中的字段</strong> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;select user,host,password from mysql.user&quot; |mysql -uroot -ppwd</span><br></pre></td></tr></table></figure>
-<p><strong>将查询到的信息导出到文件中</strong> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p1234556 -e &quot;select user,host,password into outfile &#39;&#x2F;home&#x2F;mysql&#x2F;1.txt&#39; from mysql.user;&quot;；</span><br></pre></td></tr></table></figure>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/22/MySQL%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -572,10 +603,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-09-02 15:38:26 / 修改时间：16:48:26" itemprop="dateCreated datePublished" datetime="2020-09-02T15:38:26+08:00">2020-09-02</time>
+              <time title="创建时间：2020-09-02 15:38:26" itemprop="dateCreated datePublished" datetime="2020-09-02T15:38:26+08:00">2020-09-02</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-28 15:04:31" itemprop="dateModified" datetime="2020-10-28T15:04:31+08:00">2020-10-28</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -600,24 +637,14 @@
 
       
           <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>SVN是subversion的缩写，是一个开放源代码的版本控制系统，通过采用分支管理系统的高效管理，简而言之就是用于多个人共同开发同一个项目，实现共享资源，实现最终集中式的管理。</p>
-<h1 id="服务器端配置"><a href="#服务器端配置" class="headerlink" title="服务器端配置"></a>服务器端配置</h1><p><a href="https://blog.csdn.net/xu12387/article/details/93050196" target="_blank" rel="noopener">服务器端配置（转）</a></p>
-<h1 id="客户端使用方法"><a href="#客户端使用方法" class="headerlink" title="客户端使用方法"></a>客户端使用方法</h1><p><strong>1.下载服务器端代码到本地</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn checkout svn://ip/your_repo [本地仓库路径] --username=username --password=passwd</span><br></pre></td></tr></table></figure>
-<p>如果服务器上没有代码，可以导入代码到服务器上</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">本地项目路径可以不是仓库路径</span></span><br><span class="line">svn import [本地项目路径] svn://ip//your_repo --username=username --password=passwd -m "说明描述"</span><br><span class="line"><span class="meta">#</span><span class="bash">例子</span></span><br><span class="line">svn import /Users/projects/PycharmProjects/anacondaTest svn://127.0.0.1:3690/repo/test_svn -m "svn测试2"</span><br></pre></td></tr></table></figure>
-<p>注：第一次输入了用户名和密码，后面可以不用再输入了</p>
-<p><strong>2.添加/删除文件（夹）到服务器端</strong></p>
-<p>这是将本地仓库的文件（夹）添加到服务器仓库里。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">首先要<span class="built_in">cd</span>到仓库目录</span></span><br><span class="line">cd [仓库目录]</span><br><span class="line"><span class="meta">#</span><span class="bash">添加项目到仓库</span></span><br><span class="line">svn add [文件/文件夹]</span><br><span class="line"><span class="meta">#</span><span class="bash">添加目录下所有项目</span></span><br><span class="line">svn add *</span><br><span class="line"><span class="meta">#</span><span class="bash">删除操作</span></span><br><span class="line">svn delete [文件/文件夹]</span><br><span class="line"><span class="meta">#</span><span class="bash">提交操作，每次操作都需这一步，否则不会提交到服务器端</span></span><br><span class="line">svn commit -m "描述说明"</span><br></pre></td></tr></table></figure>
-<p><strong>3.代码同步至服务器</strong></p>
-<p>将本地的代码修改同步到服务器端。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">首先<span class="built_in">cd</span>到项目目录</span></span><br><span class="line">cd [项目目录]</span><br><span class="line"><span class="meta">#</span><span class="bash">提交操作，没错，还是commit(也可以简写为ci)</span></span><br><span class="line">svn commit -m "描述说明"</span><br></pre></td></tr></table></figure>
-<p>注：这是修改，并不包括添加/删除操作</p>
-<p><strong>4.更新本地仓库与版本回退</strong></p>
-<p>这是将本地仓库文件夹更新为服务器上指定版本的仓库文件夹，也就说服务器上指定版本的仓库是什么样，更新后本地仓库就是什么样（为啥本地同步服务器就这么麻烦呢）。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="built_in">cd</span>到想要更新的项目文件夹</span></span><br><span class="line">cd [项目目录]</span><br><span class="line"><span class="meta">#</span><span class="bash">更新本地仓库，默认为最新版本仓库</span></span><br><span class="line">svn update</span><br><span class="line"><span class="meta">#</span><span class="bash">更新为指定版本仓库，这就实现了版本回退</span></span><br><span class="line">svn update -r [版本号]</span><br></pre></td></tr></table></figure>
-<p><strong>注：从这几个操作步骤来看，svn的操作是以当前文件夹目录作为作用域的，也就是说svn的操作只在当前文件及其包含的子文件夹内起作用</strong></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/02/svn-config-method/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -951,80 +978,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/12/ssh-download-upload/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/lufei.jpeg">
-      <meta itemprop="name" content="YZK">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yzk's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/12/ssh-download-upload/" class="post-title-link" itemprop="url">ssh上传与下载文件</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-08-12 22:12:29 / 修改时间：22:28:37" itemprop="dateCreated datePublished" datetime="2020-08-12T22:12:29+08:00">2020-08-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="1、上传文件"><a href="#1、上传文件" class="headerlink" title="1、上传文件"></a>1、上传文件</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -P port localAdress user@hostIP:hostAdress</span><br></pre></td></tr></table></figure>
-<p><strong>指定端口号-P必须大写</strong></p>
-<h4 id="2、上传文件夹"><a href="#2、上传文件夹" class="headerlink" title="2、上传文件夹"></a>2、上传文件夹</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -P port -r localAdress user@hostIP:hostAdress</span><br></pre></td></tr></table></figure>
-<h4 id="3、下载文件"><a href="#3、下载文件" class="headerlink" title="3、下载文件"></a>3、下载文件</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -P port user@hostIP:hostAdress localAdress</span><br></pre></td></tr></table></figure>
-<h4 id="4、下载文件夹"><a href="#4、下载文件夹" class="headerlink" title="4、下载文件夹"></a>4、下载文件夹</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -P port -r user@hostIP:hostAdress localAdress</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1075,20 +1028,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
