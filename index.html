@@ -369,7 +369,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-28 15:03:12" itemprop="dateModified" datetime="2020-10-28T15:03:12+08:00">2020-10-28</time>
+                <time title="修改时间：2020-10-28 15:42:28" itemprop="dateModified" datetime="2020-10-28T15:42:28+08:00">2020-10-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -397,6 +397,12 @@
           <p><strong>mongod</strong>是数据库本身启动配置的命令</p>
 <p><strong>mongo</strong>是数据库shell的命令</p>
 <p><strong>步骤</strong>：</p>
+<ul>
+<li><p>添加mongoDB的bin文件到系统路径</p>
+<p>在.bash_profile中添加：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PATH=“/usr/local/mongodb/bin：$PATH</span><br><span class="line">export PATH</span><br><span class="line"><span class="meta">#</span><span class="bash">执行配置文件</span></span><br><span class="line">source ~/.bash_profile</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/10/26/mongoDB-config/#more" rel="contents">
