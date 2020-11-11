@@ -183,6 +183,315 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/11/vue-pm2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/lufei.jpeg">
+      <meta itemprop="name" content="YZK">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yzk's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/11/vue-pm2/" class="post-title-link" itemprop="url">vue_pm2</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-11-11 14:23:36 / 修改时间：14:36:21" itemprop="dateCreated datePublished" datetime="2020-11-11T14:23:36+08:00">2020-11-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Node/" itemprop="url" rel="index">
+                    <span itemprop="name">Node</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>pm2 是一个带有负载均衡功能的Node应用的进程管理器。优点是内建负载均衡（使用Node cluster 集群模块）、后台运行  、0秒停机重载  、开机自启动脚本  、停止不稳定的进程（避免无限循环）、控制台检测  、提供远程控制和实时的接口API (允许和PM2进程管理器交互)。</p>
+<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><h2 id="启用-amp-停用服务"><a href="#启用-amp-停用服务" class="headerlink" title="启用&amp;停用服务"></a>启用&amp;停用服务</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 启动一个node服务，命令为pm2 start</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> --name进程名称，--watch：当文件变化时自动重启应用</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> --ignore-watch:忽略文件夹[list]的修改，文件夹用空格隔开。这样修改这些文件夹不会自动重启</span></span><br><span class="line">pm2 start index.js --name=vue --watch --ignore-watch="app statics"</span><br><span class="line"><span class="meta">#</span><span class="bash"> 重启</span></span><br><span class="line">pm2 restart index.js --name=vue --watch --ignore-watch="app statics"</span><br><span class="line"><span class="meta">#</span><span class="bash"> 关闭服务</span></span><br><span class="line">pm2 stop [name]</span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除服务</span></span><br><span class="line">pm2 delete [name]</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/11/11/vue-pm2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/02/tensorflow/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/lufei.jpeg">
+      <meta itemprop="name" content="YZK">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yzk's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/02/tensorflow/" class="post-title-link" itemprop="url">tensorflow</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-11-02 09:43:23 / 修改时间：11:34:24" itemprop="dateCreated datePublished" datetime="2020-11-02T09:43:23+08:00">2020-11-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <div class="table-container">
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>计算图</td>
+<td>是包含节点和边的网络。本节定义所有要使用的<strong>数据</strong>，也就是<strong>张量（tensor）对象（常量、变量和占位符）</strong>，同时定义要<strong>执行的所有计算</strong>，即运算操作对象（Operation Object，简称 OP）。<strong>即tensorflow定义与计算是分开的，先定义张量与操作，然后执行run的指令。</strong></td>
+</tr>
+<tr>
+<td>Session</td>
+<td>TF的会话对象，用于执行计算图，位置为tf.Session()。</td>
+</tr>
+<tr>
+<td>张量</td>
+<td>tensorflow的数据结构，实质为一个<strong>n维矩阵</strong>，<strong>包括常量（不能被改变）</strong>、<strong>变量（需要初始化，可以用全局初始化tf.global_variable_initializar()，初始化所有变量，也可以使用单独初始化tf.Variable.initializar()初始化该变量）</strong>和占位符（不会占用内存资源）。表达式分别为：tf.constant()、tf.Variable()、tf.placeholder(dtype,shape=None,name=None)</td>
+</tr>
+<tr>
+<td>Saver</td>
+<td>用于保存，类似于joblib。表达式：saver=tf.train.Saver()，saver.save(对象，路径)</td>
+</tr>
+<tr>
+<td>乘除法</td>
+<td>1.两个变量按元素相乘，a*b；2.矩阵乘以一个标量，tf.scalar_mul(2,a)；按元素相除，tf.div(a,b)，如果是int矩阵，最好使用tf.truediv(a,b)，因为它首先会将整数张量转为浮点类，避免错误；4.按元素取余，tf.mod(a,b)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Placeholder</td>
+<td>用于存储神经网络的输入，包括数据与标签</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>任何深度学习都由四个重要部分组成：数据集、定义模型（网络结构）、训练/学习以及预测/评估。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/30/CNN/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/lufei.jpeg">
+      <meta itemprop="name" content="YZK">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yzk's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/30/CNN/" class="post-title-link" itemprop="url">CNN-卷积神经网络</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-10-30 10:06:43" itemprop="dateCreated datePublished" datetime="2020-10-30T10:06:43+08:00">2020-10-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-03 11:05:16" itemprop="dateModified" datetime="2020-11-03T11:05:16+08:00">2020-11-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index">
+                    <span itemprop="name">神经网络</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>参考资料</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">文章名及链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">[一文让你理解什么是卷积神经网络]<a href="https://www.jianshu.com/p/1ea2949c0056" target="_blank" rel="noopener">https://www.jianshu.com/p/1ea2949c0056</a></td>
+</tr>
+<tr>
+<td style="text-align:left">[卷积神经网络CNN完全指南终极版（一）]<a href="https://zhuanlan.zhihu.com/p/27908027" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/27908027</a></td>
+</tr>
+<tr>
+<td style="text-align:left">[CNN 入门讲解：什么是全连接层（Fully Connected Layer）?]<a href="https://zhuanlan.zhihu.com/p/33841176" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/33841176</a></td>
+</tr>
+<tr>
+<td style="text-align:left">[CNN基础知识——全连接层（Fully Connected Layer）]<a href="https://zhuanlan.zhihu.com/p/78760688?utm_source=wechat_session" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/78760688?utm_source=wechat_session</a></td>
+</tr>
+<tr>
+<td style="text-align:left">[CNN——全连接层 dense/FC]<a href="https://www.jianshu.com/p/58d42aa3a28f" target="_blank" rel="noopener">https://www.jianshu.com/p/58d42aa3a28f</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Q1：如何训练卷积核？</p>
+<p>Q2：如何训练全连接层的神经网络参数w和b</p>
+<p><strong>卷积层</strong></p>
+<p><strong>非线性激活层</strong></p>
+<p><strong>池化层</strong></p>
+<p><strong>全连接层</strong></p>
+<p>前面的是特征提取，这一步才涉及到神经网络，全连接层的作用是分类。</p>
+<p>softmax:</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/28/pip-change-source/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -751,245 +1060,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/20/terminal-stty/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/lufei.jpeg">
-      <meta itemprop="name" content="YZK">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yzk's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/20/terminal-stty/" class="post-title-link" itemprop="url">stty设置终端显示及输入列数</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-20 17:33:27" itemprop="dateCreated datePublished" datetime="2020-08-20T17:33:27+08:00">2020-08-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-22 21:35:20" itemprop="dateModified" datetime="2020-09-22T21:35:20+08:00">2020-09-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong>设置终端显示及输入列数，避免输入长度太长将前面显示内容覆盖</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">注意行列要一起设置，否则会没有效果</span></span><br><span class="line">stty cols [col]</span><br><span class="line">stty rows [row]</span><br><span class="line"><span class="meta">#</span><span class="bash">显示当前终端行列设置</span></span><br><span class="line">stty size</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/17/linxu-install-command/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/lufei.jpeg">
-      <meta itemprop="name" content="YZK">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yzk's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/17/linxu-install-command/" class="post-title-link" itemprop="url">Linxu程序安装指令</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-17 22:36:03" itemprop="dateCreated datePublished" datetime="2020-08-17T22:36:03+08:00">2020-08-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-20 17:00:53" itemprop="dateModified" datetime="2020-08-20T17:00:53+08:00">2020-08-20</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="1-安装netstat命令"><a href="#1-安装netstat命令" class="headerlink" title="1.安装netstat命令"></a>1.安装netstat命令</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">apt-get install net-tools</span><br><span class="line"><span class="meta">#</span><span class="bash">查看网卡、IP</span></span><br><span class="line">ifconfig</span><br><span class="line"><span class="meta">#</span><span class="bash">查看路由表</span></span><br><span class="line">netstat -nr</span><br><span class="line"><span class="meta">#</span><span class="bash">查看当前开放端口</span></span><br><span class="line">netstat -aptn</span><br></pre></td></tr></table></figure>
-<h4 id="2-安装ps命令"><a href="#2-安装ps命令" class="headerlink" title="2. 安装ps命令"></a>2. 安装ps命令</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apt-get install procps</span><br><span class="line"><span class="meta">#</span><span class="bash">查看进程详细信息</span></span><br><span class="line">ps -ef</span><br></pre></td></tr></table></figure>
-<h4 id="3-安装ssh服务"><a href="#3-安装ssh服务" class="headerlink" title="3.安装ssh服务"></a>3.安装ssh服务</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apt-get install openssh-server</span><br><span class="line"><span class="meta">#</span><span class="bash">启动服务</span></span><br><span class="line">service ssh start</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/08/17/linxu-install-command/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/17/linux-back-command/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/lufei.jpeg">
-      <meta itemprop="name" content="YZK">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yzk's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/17/linux-back-command/" class="post-title-link" itemprop="url">Linux程序后台运行命令</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-08-17 22:09:06 / 修改时间：22:47:51" itemprop="dateCreated datePublished" datetime="2020-08-17T22:09:06+08:00">2020-08-17</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">后台执行命令为&amp;，退出终端后保持程序运行命令为nohup</span></span><br><span class="line">nohup [option] [file] &gt; log.txt 2&gt;&amp;1 &amp;</span><br><span class="line"><span class="meta">#</span><span class="bash">查看后台运行的程序</span></span><br><span class="line">jobs</span><br><span class="line"><span class="meta">#</span><span class="bash">详细查看后台运行程序</span></span><br><span class="line">jobs -l</span><br><span class="line"><span class="meta">#</span><span class="bash">结束进程</span></span><br><span class="line">kill [pid]</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/08/17/linux-back-command/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1040,20 +1110,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
