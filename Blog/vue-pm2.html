@@ -50,18 +50,22 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="标签">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+  <meta name="description" content="pm2 是一个带有负载均衡功能的Node应用的进程管理器。优点是内建负载均衡（使用Node cluster 集群模块）、后台运行  、0秒停机重载  、开机自启动脚本  、停止不稳定的进程（避免无限循环）、控制台检测  、提供远程控制和实时的接口API (允许和PM2进程管理器交互)。 常用命令启用&amp;停用服务12345678910# 启动一个node服务，命令为pm2 start# --n">
+<meta property="og:type" content="website">
+<meta property="og:title" content="vue_pm2">
+<meta property="og:url" content="http://yoursite.com/Blog/vue-pm2.html">
 <meta property="og:site_name" content="Yzk&#39;s Blog">
+<meta property="og:description" content="pm2 是一个带有负载均衡功能的Node应用的进程管理器。优点是内建负载均衡（使用Node cluster 集群模块）、后台运行  、0秒停机重载  、开机自启动脚本  、停止不稳定的进程（避免无限循环）、控制台检测  、提供远程控制和实时的接口API (允许和PM2进程管理器交互)。 常用命令启用&amp;停用服务12345678910# 启动一个node服务，命令为pm2 start# --n">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-11-04T12:33:47.161Z">
-<meta property="article:modified_time" content="2019-11-04T12:32:50.856Z">
+<meta property="og:image" content="http://yoursite.com/Blog/image-20201111143410616.png">
+<meta property="article:published_time" content="2020-11-11T06:23:36.000Z">
+<meta property="article:modified_time" content="2020-11-11T06:36:21.779Z">
 <meta property="article:author" content="YZK">
-<meta property="article:tag" content="test blog">
+<meta property="article:tag" content="pm2">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/Blog/image-20201111143410616.png">
 
-<link rel="canonical" href="http://yoursite.com/tags/">
+<link rel="canonical" href="http://yoursite.com/Blog/vue-pm2">
 
 
 <script id="page-configurations">
@@ -75,7 +79,7 @@
   };
 </script>
 
-  <title>标签 | Yzk's Blog
+  <title>vue_pm2 | Yzk's Blog
   </title>
   
 
@@ -190,7 +194,7 @@
     <div class="post-block" lang="zh-CN">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">标签
+<h1 class="post-title" itemprop="name headline">vue_pm2
 </h1>
 
 <div class="post-meta">
@@ -204,15 +208,13 @@
       
       
       <div class="post-body">
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-              暂无标签
-            </div>
-            <div class="tag-cloud-tags">
-              
-            </div>
-          </div>
-        
+          <p>pm2 是一个带有负载均衡功能的Node应用的进程管理器。优点是内建负载均衡（使用Node cluster 集群模块）、后台运行  、0秒停机重载  、开机自启动脚本  、停止不稳定的进程（避免无限循环）、控制台检测  、提供远程控制和实时的接口API (允许和PM2进程管理器交互)。</p>
+<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><h2 id="启用-amp-停用服务"><a href="#启用-amp-停用服务" class="headerlink" title="启用&amp;停用服务"></a>启用&amp;停用服务</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 启动一个node服务，命令为pm2 start</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> --name进程名称，--watch：当文件变化时自动重启应用</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> --ignore-watch:忽略文件夹[list]的修改，文件夹用空格隔开。这样修改这些文件夹不会自动重启</span></span><br><span class="line">pm2 start index.js --name=vue --watch --ignore-watch="app statics"</span><br><span class="line"><span class="meta">#</span><span class="bash"> 重启</span></span><br><span class="line">pm2 restart index.js --name=vue --watch --ignore-watch="app statics"</span><br><span class="line"><span class="meta">#</span><span class="bash"> 关闭服务</span></span><br><span class="line">pm2 stop [name]</span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除服务</span></span><br><span class="line">pm2 delete [name]</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="开启监控"><a href="#开启监控" class="headerlink" title="开启监控"></a>开启监控</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 monit</span><br></pre></td></tr></table></figure>
+<p><img src="/Blog/image-20201111143410616.png" alt="image-20201111143410616"></p>
+<h2 id="打印日志"><a href="#打印日志" class="headerlink" title="打印日志"></a>打印日志</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 logs</span><br></pre></td></tr></table></figure>
+
       </div>
       
       
@@ -252,6 +254,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#常用命令"><span class="nav-number">1.</span> <span class="nav-text">常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#启用-amp-停用服务"><span class="nav-number">1.1.</span> <span class="nav-text">启用&amp;停用服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启监控"><span class="nav-number">1.2.</span> <span class="nav-text">开启监控</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打印日志"><span class="nav-number">1.3.</span> <span class="nav-text">打印日志</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

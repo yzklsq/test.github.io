@@ -50,18 +50,20 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="标签">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+  <meta name="description" content="mongod是数据库本身启动配置的命令 mongo是数据库shell的命令 步骤：  添加mongoDB的bin文件到系统路径 在.bash_profile中添加： 1234PATH&#x3D;“&#x2F;usr&#x2F;local&#x2F;mongodb&#x2F;bin：$PATHexport PATH#执行配置文件source ~&#x2F;.bash_profile">
+<meta property="og:type" content="website">
+<meta property="og:title" content="mongoDB数据库配置及注意事项">
+<meta property="og:url" content="http://yoursite.com/Blog/mongoDB-config.html">
 <meta property="og:site_name" content="Yzk&#39;s Blog">
+<meta property="og:description" content="mongod是数据库本身启动配置的命令 mongo是数据库shell的命令 步骤：  添加mongoDB的bin文件到系统路径 在.bash_profile中添加： 1234PATH&#x3D;“&#x2F;usr&#x2F;local&#x2F;mongodb&#x2F;bin：$PATHexport PATH#执行配置文件source ~&#x2F;.bash_profile">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-11-04T12:33:47.161Z">
-<meta property="article:modified_time" content="2019-11-04T12:32:50.856Z">
+<meta property="article:published_time" content="2020-10-26T03:19:10.000Z">
+<meta property="article:modified_time" content="2020-10-28T07:42:28.661Z">
 <meta property="article:author" content="YZK">
-<meta property="article:tag" content="test blog">
+<meta property="article:tag" content="mongoDB">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/tags/">
+<link rel="canonical" href="http://yoursite.com/Blog/mongoDB-config">
 
 
 <script id="page-configurations">
@@ -75,7 +77,7 @@
   };
 </script>
 
-  <title>标签 | Yzk's Blog
+  <title>mongoDB数据库配置及注意事项 | Yzk's Blog
   </title>
   
 
@@ -190,7 +192,7 @@
     <div class="post-block" lang="zh-CN">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">标签
+<h1 class="post-title" itemprop="name headline">mongoDB数据库配置及注意事项
 </h1>
 
 <div class="post-meta">
@@ -204,15 +206,40 @@
       
       
       <div class="post-body">
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-              暂无标签
-            </div>
-            <div class="tag-cloud-tags">
-              
-            </div>
-          </div>
-        
+          <p><strong>mongod</strong>是数据库本身启动配置的命令</p>
+<p><strong>mongo</strong>是数据库shell的命令</p>
+<p><strong>步骤</strong>：</p>
+<ul>
+<li><p>添加mongoDB的bin文件到系统路径</p>
+<p>在.bash_profile中添加：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PATH=“/usr/local/mongodb/bin：$PATH</span><br><span class="line">export PATH</span><br><span class="line"><span class="meta">#</span><span class="bash">执行配置文件</span></span><br><span class="line">source ~/.bash_profile</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><p>为mongoDB添加配置文件，在/usr/local/etc/mongod.conf中添加以下内容：</p>
+<p><strong>注意大小写敏感</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">后台运行</span></span><br><span class="line">fork=true</span><br><span class="line"><span class="meta">#</span><span class="bash">数据库路径</span></span><br><span class="line">dbpath=/users/zky/data/db</span><br><span class="line"><span class="meta">#</span><span class="bash">ip&amp;端口号</span></span><br><span class="line">bind_ip=127.0.0.1</span><br><span class="line">port=27017</span><br><span class="line"><span class="meta">#</span><span class="bash">日志文件</span></span><br><span class="line">logpath=/users/zky/data/logs/mongodb.log</span><br><span class="line">logappend=true</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">是否为授权模式</span></span><br><span class="line"><span class="meta">#</span><span class="bash">auth=<span class="literal">true</span></span></span><br><span class="line">noauth=true</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 需要在sudo下执行</span></span><br><span class="line">sudo mongod -f [配置文件路径]</span><br><span class="line"><span class="meta">#</span><span class="bash"> 或者</span></span><br><span class="line">suod mongod --config [配置文件路径]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关闭mongoDB</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入mongo的shell</span></span><br><span class="line">mongo</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> use admin</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.shutdownServer()</span></span><br></pre></td></tr></table></figure>
+<p>注意千万不要kill或者直接关机，会发生数据库重新启动不了的情况！</p>
+</li>
+</ul>
+<p><strong>因kill进程或者关机前为关闭mongoDB发生的错误解决方法</strong></p>
+<ul>
+<li><p>删掉mongod.lock文件，以及清楚log日志文件内容；</p>
+</li>
+<li><p>以修复命令启动mongo</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mongod -f [配置文件路径] --repair</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>以正常命令启动mongo</p>
+</li>
+</ul>
+
       </div>
       
       

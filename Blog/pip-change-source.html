@@ -50,18 +50,20 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="标签">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+  <meta name="description" content="国内常用的pip源 1234567阿里云 [http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;pypi&#x2F;simple&#x2F;]中国科技大学 [https:&#x2F;&#x2F;pypi.mirrors.ustc.edu.cn&#x2F;simple&#x2F;]豆瓣(douban) [http:&#x2F;&#x2F;pypi.douban.com&#x2F;simple&#x2F;]清华大学 [https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple&#x2F;">
+<meta property="og:type" content="website">
+<meta property="og:title" content="pip换源">
+<meta property="og:url" content="http://yoursite.com/Blog/pip-change-source.html">
 <meta property="og:site_name" content="Yzk&#39;s Blog">
+<meta property="og:description" content="国内常用的pip源 1234567阿里云 [http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;pypi&#x2F;simple&#x2F;]中国科技大学 [https:&#x2F;&#x2F;pypi.mirrors.ustc.edu.cn&#x2F;simple&#x2F;]豆瓣(douban) [http:&#x2F;&#x2F;pypi.douban.com&#x2F;simple&#x2F;]清华大学 [https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple&#x2F;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-11-04T12:33:47.161Z">
-<meta property="article:modified_time" content="2019-11-04T12:32:50.856Z">
+<meta property="article:published_time" content="2020-10-28T07:36:16.000Z">
+<meta property="article:modified_time" content="2020-10-28T07:40:47.915Z">
 <meta property="article:author" content="YZK">
-<meta property="article:tag" content="test blog">
+<meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/tags/">
+<link rel="canonical" href="http://yoursite.com/Blog/pip-change-source">
 
 
 <script id="page-configurations">
@@ -75,7 +77,7 @@
   };
 </script>
 
-  <title>标签 | Yzk's Blog
+  <title>pip换源 | Yzk's Blog
   </title>
   
 
@@ -190,7 +192,7 @@
     <div class="post-block" lang="zh-CN">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">标签
+<h1 class="post-title" itemprop="name headline">pip换源
 </h1>
 
 <div class="post-meta">
@@ -204,15 +206,15 @@
       
       
       <div class="post-body">
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-              暂无标签
-            </div>
-            <div class="tag-cloud-tags">
-              
-            </div>
-          </div>
-        
+          <p><strong>国内常用的pip源</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">阿里云 [http://mirrors.aliyun.com/pypi/simple/]</span><br><span class="line">中国科技大学 [https://pypi.mirrors.ustc.edu.cn/simple/]</span><br><span class="line">豆瓣(douban) [http://pypi.douban.com/simple/]</span><br><span class="line">清华大学 [https://pypi.tuna.tsinghua.edu.cn/simple/]</span><br><span class="line">中国科学技术大学 [http://pypi.mirrors.ustc.edu.cn/simple/]</span><br><span class="line">华中理工大学：[http://pypi.hustunique.com/]</span><br><span class="line">山东理工大学：[http://pypi.sdutlinux.org/]</span><br></pre></td></tr></table></figure>
+<p><strong>步骤</strong></p>
+<ul>
+<li>创建.pip文件夹，如果有则不用创建</li>
+<li>创建pip.conf配置文件，并完成以下配置：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 打开pip.conf文件</span></span><br><span class="line">vim ~/.pip/pip.conf</span><br><span class="line"><span class="meta">#</span><span class="bash"> 写入以下配置语句，保存后退出即可，不需要执行该文件</span></span><br><span class="line">[global]</span><br><span class="line">index-url = https://pypi.tuna.tsinghua.edu.cn/simple/</span><br><span class="line">[install]</span><br><span class="line">use-mirrors = true</span><br><span class="line">mirrors = https://pypi.tuna.tsinghua.edu.cn/simple/</span><br><span class="line">trusted-host = pypi.tuna.tsinghua.edu.cn</span><br></pre></td></tr></table></figure>
+
       </div>
       
       
