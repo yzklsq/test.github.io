@@ -50,18 +50,20 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="分类">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+  <meta name="description" content="定义连接池是创建和管理一个连接的缓冲池的技术，这些连接准备好被任何需要它们的线程使用。回想我们连接数据库时，通常会执行两个步骤，一个步骤是通过createConnction()函数创建数据库连接，然后通过connect()函数打开数据库获得数据库操作游标，执行完数据库操作后释放数据库游标，最后关闭数据库连接。在这一些列过程中，重要的数据库操作并不占用系统资源，反而是连接数据库这样频繁的操作会消耗大">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库连接池">
+<meta property="og:url" content="http://yoursite.com/2020/09/22/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/index.html">
 <meta property="og:site_name" content="Yzk&#39;s Blog">
+<meta property="og:description" content="定义连接池是创建和管理一个连接的缓冲池的技术，这些连接准备好被任何需要它们的线程使用。回想我们连接数据库时，通常会执行两个步骤，一个步骤是通过createConnction()函数创建数据库连接，然后通过connect()函数打开数据库获得数据库操作游标，执行完数据库操作后释放数据库游标，最后关闭数据库连接。在这一些列过程中，重要的数据库操作并不占用系统资源，反而是连接数据库这样频繁的操作会消耗大">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-11-04T12:36:29.419Z">
-<meta property="article:modified_time" content="2019-11-04T12:36:29.413Z">
+<meta property="article:published_time" content="2020-09-22T13:05:36.000Z">
+<meta property="article:modified_time" content="2020-09-22T13:24:47.093Z">
 <meta property="article:author" content="YZK">
-<meta property="article:tag" content="test blog">
+<meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/categories/">
+<link rel="canonical" href="http://yoursite.com/2020/09/22/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/">
 
 
 <script id="page-configurations">
@@ -69,14 +71,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
-    isPage: true,
+    isPost: true,
+    isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>分类 | Yzk's Blog
-  </title>
+  <title>数据库连接池 | Yzk's Blog</title>
   
 
 
@@ -177,52 +178,114 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
           <div class="content">
             
 
   <div class="posts-expand">
-    
-    
-    
-    <div class="post-block" lang="zh-CN">
-      <header class="post-header">
-
-<h1 class="post-title" itemprop="name headline">分类
-</h1>
-
-<div class="post-meta">
+      
   
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/22/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/">
 
-</div>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/lufei.jpeg">
+      <meta itemprop="name" content="YZK">
+      <meta itemprop="description" content="">
+    </span>
 
-</header>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yzk's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据库连接池
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-22 21:05:36 / 修改时间：21:24:47" itemprop="dateCreated datePublished" datetime="2020-09-22T21:05:36+08:00">2020-09-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-      
-      
-      <div class="post-body">
-          <div class="category-all-page">
-            <div class="category-all-title">
-              目前共计 8 个分类
+        <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>连接池是创建和管理一个连接的缓冲池的技术，这些连接准备好被任何需要它们的线程使用。<br>回想我们连接数据库时，通常会执行两个步骤，一个步骤是通过createConnction()函数创建数据库连接，然后通过connect()函数打开数据库获得数据库操作游标，执行完数据库操作后释放数据库游标，最后关闭数据库连接。在这一些列过程中，重要的数据库操作并不占用系统资源，反而是连接数据库这样频繁的操作会消耗大量的系统资源。数据库连接池的作用便是服用数据库连接，减少频繁创建关闭数据库连接操作，从而达到节约资源、提高程序运行效率的作用。<br>有人可能会问，那我不关闭数据库连接不就行了？其实这样更不可取，其一是，如果访问后不关闭数据库连接，当新的数据库操作指令到来时又创建新的数据库连接，那么便会消耗系统大量的资源。其二，如果不创建新的数据库连接，而只用这一个数据库连接，那么当多用户同时操作数据库时，就可能会发生等待、数据冲突等问题。为了解决上述问题，数据库连接池变应运而生。</p>
+<a id="more"></a>
+<p>数据库连接池简而言之就是规定一个不关闭的数据库连接数上限，当有线程需要连接数据库时，只需要从连接池中获得一个已存在的数据库连接，如果没有空闲数据库连接，而数据库连接数没有达到上限时，便创建一个新的数据库连接。</p>
+<h1 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h1><ul>
+<li><p><strong>减少连接创建时间</strong></p>
+</li>
+<li><p><strong>简化的编程模式</strong></p>
+</li>
+<li><p><strong>受控的资源使用</strong></p>
+<p>如果用户不使用连接池，而是每当线程需要时创建一个新的连接，那么用户的应用程序的资源使用会产生非常大的浪费并且可能会导致高负载下的异常发生。</p>
+</li>
+</ul>
+<h1 id="运作原理"><a href="#运作原理" class="headerlink" title="运作原理"></a>运作原理</h1><p>数据库连接池技术的思想非常简单，将数据库连接作为对象存储在一个Vector对象中，一旦数据库连接建立后，不同的数据库访问请求就可以共享这些连接，这样，通过复用这些已经建立的数据库连接，可以克服上述缺点，极大地节省系统资源和时间。</p>
+<p>数据库连接池的主要操作如下：<br>（1）建立数据库连接池对象（服务器启动）。<br>（2）按照事先指定的参数创建初始数量的数据库连接（即：空闲连接数）。<br>（3）对于一个数据库访问请求，直接从连接池中得到一个连接。如果数据库连接池对象中没有空闲的连接，且连接数没有达到最大（即：最大活跃连接数），创建一个新的数据库连接。<br>（4）存取数据库。<br>（5）关闭数据库，释放所有数据库连接（此时的关闭数据库连接，并非真正关闭，而是将其放入空闲队列中。如实际空闲连接数大于初始空闲连接数则释放连接）。<br>（6）释放数据库连接池对象（服务器停止、维护期间，释放数据库连接池对象，并释放所有连接）。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"># 数据库</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/09/22/MySQL%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" rel="next" title="MySQL常用操作">
+                  <i class="fa fa-chevron-left"></i> MySQL常用操作
+                </a>
             </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node/">Node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">神经网络</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><span class="category-list-count">4</span></li></ul>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2020/10/26/mongoDB-config/" rel="prev" title="mongoDB数据库配置及注意事项">
+                  mongoDB数据库配置及注意事项 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
-        
-      </div>
-      
-      
-      
-    </div>
+      </footer>
     
+  </article>
+  
+  
+  
 
-    
-    
-    
   </div>
 
 
@@ -252,6 +315,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#好处"><span class="nav-number">2.</span> <span class="nav-text">好处</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运作原理"><span class="nav-number">3.</span> <span class="nav-text">运作原理</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="SCP上传下载文件1、上传文件1scp -P port localAdress user@hostIP:hostAdress 指定端口号-P必须大写 2、上传文件夹1scp -P port -r localAdress user@hostIP:hostAdress 3、下载文件1scp -P port user@hostIP:hostAdress localAdress 4、下载文件夹1scp -">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ssh上传与下载文件">
+<meta property="og:url" content="http://yoursite.com/2020/08/12/ssh-download-upload/index.html">
+<meta property="og:site_name" content="Yzk&#39;s Blog">
+<meta property="og:description" content="SCP上传下载文件1、上传文件1scp -P port localAdress user@hostIP:hostAdress 指定端口号-P必须大写 2、上传文件夹1scp -P port -r localAdress user@hostIP:hostAdress 3、下载文件1scp -P port user@hostIP:hostAdress localAdress 4、下载文件夹1scp -">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-08-12T14:12:29.000Z">
+<meta property="article:modified_time" content="2020-10-28T07:16:11.986Z">
+<meta property="article:author" content="YZK">
+<meta property="article:tag" content="SSH">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/08/12/ssh-download-upload/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>ssh上传与下载文件 | Yzk's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yzk's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">好好学习，天天向上。</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/12/ssh-download-upload/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/lufei.jpeg">
+      <meta itemprop="name" content="YZK">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yzk's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ssh上传与下载文件
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-12 22:12:29" itemprop="dateCreated datePublished" datetime="2020-08-12T22:12:29+08:00">2020-08-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-28 15:16:11" itemprop="dateModified" datetime="2020-10-28T15:16:11+08:00">2020-10-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="SCP上传下载文件"><a href="#SCP上传下载文件" class="headerlink" title="SCP上传下载文件"></a>SCP上传下载文件</h2><h4 id="1、上传文件"><a href="#1、上传文件" class="headerlink" title="1、上传文件"></a>1、上传文件</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -P port localAdress user@hostIP:hostAdress</span><br></pre></td></tr></table></figure>
+<p><strong>指定端口号-P必须大写</strong></p>
+<h4 id="2、上传文件夹"><a href="#2、上传文件夹" class="headerlink" title="2、上传文件夹"></a>2、上传文件夹</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -P port -r localAdress user@hostIP:hostAdress</span><br></pre></td></tr></table></figure>
+<h4 id="3、下载文件"><a href="#3、下载文件" class="headerlink" title="3、下载文件"></a>3、下载文件</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -P port user@hostIP:hostAdress localAdress</span><br></pre></td></tr></table></figure>
+<h4 id="4、下载文件夹"><a href="#4、下载文件夹" class="headerlink" title="4、下载文件夹"></a>4、下载文件夹</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -P port -r user@hostIP:hostAdress localAdress</span><br></pre></td></tr></table></figure>
+<h2 id="SFTP上传下载文件"><a href="#SFTP上传下载文件" class="headerlink" title="SFTP上传下载文件"></a>SFTP上传下载文件</h2><h4 id="1、连接远程服务器"><a href="#1、连接远程服务器" class="headerlink" title="1、连接远程服务器"></a>1、连接远程服务器</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> -P为大写</span></span><br><span class="line">sftp -P [port] user@ip</span><br></pre></td></tr></table></figure>
+<h4 id="2、上传与下载"><a href="#2、上传与下载" class="headerlink" title="2、上传与下载"></a>2、上传与下载</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 上传文件</span></span><br><span class="line"><span class="meta">sftp&gt;</span><span class="bash">put [本地文件位置] [服务器文件位置]</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 上传文件夹</span></span><br><span class="line"><span class="meta">sftp&gt;</span><span class="bash">put -r [本地文件位置] [服务器文件位置]</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 下载文件</span></span><br><span class="line"><span class="meta">sftp&gt;</span><span class="bash">get [服务器文件位置] [本地文件位置] </span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 下载文件夹</span></span><br><span class="line"><span class="meta">sftp&gt;</span><span class="bash">get -r [服务器文件位置] [本地文件位置]</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/SSH/" rel="tag"># SSH</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/08/12/docker-commands/" rel="next" title="Docker常用命令">
+                  <i class="fa fa-chevron-left"></i> Docker常用命令
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2020/08/13/pycharm-ssh-docker/" rel="prev" title="PyCharm通过ssh连接docker容器">
+                  PyCharm通过ssh连接docker容器 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SCP上传下载文件"><span class="nav-number">1.</span> <span class="nav-text">SCP上传下载文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、上传文件"><span class="nav-number">1.0.1.</span> <span class="nav-text">1、上传文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、上传文件夹"><span class="nav-number">1.0.2.</span> <span class="nav-text">2、上传文件夹</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、下载文件"><span class="nav-number">1.0.3.</span> <span class="nav-text">3、下载文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、下载文件夹"><span class="nav-number">1.0.4.</span> <span class="nav-text">4、下载文件夹</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SFTP上传下载文件"><span class="nav-number">2.</span> <span class="nav-text">SFTP上传下载文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、连接远程服务器"><span class="nav-number">2.0.1.</span> <span class="nav-text">1、连接远程服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、上传与下载"><span class="nav-number">2.0.2.</span> <span class="nav-text">2、上传与下载</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="YZK"
+    src="/images/lufei.jpeg">
+  <p class="site-author-name" itemprop="name">YZK</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YZK</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+
+  
+
+</body>
+</html>
