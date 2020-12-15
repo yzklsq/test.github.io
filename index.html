@@ -214,7 +214,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-15 10:18:47" itemprop="dateModified" datetime="2020-12-15T10:18:47+08:00">2020-12-15</time>
+                <time title="修改时间：2020-12-15 10:19:42" itemprop="dateModified" datetime="2020-12-15T10:19:42+08:00">2020-12-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -243,88 +243,14 @@
 <p><strong>2.学习速率</strong></p>
 <p>一种超参数（需要手动设置/调整的参数称之为超参数），用于对梯度进行缩放。训练模型时需要指定学习速率，如果太小，则找到损失函数的极小值点就需要迭代很多次；如果太大，则有可能跳过了极小值点，并且会因周期性的跳跃找不到极小值点。</p>
 <p><strong>通过优化器进行学习率的调整。</strong></p>
-<p><strong>3.激活函数与损失函数</strong></p>
-<p>损失函数：是在输出层计算输出值与真实值的差距。</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>激活函数</th>
-<th>描述</th>
-<th>损失函数</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>relu</td>
-<td>非线性激活函数，当x<0时，f(x)=0；当x>=0时，f(x)=x。</0时，f(x)=0；当x></td>
-<td>无</td>
-</tr>
-<tr>
-<td>sigmoid</td>
-<td>$ \Phi(Z)=\frac{1}{1+e^{-z}}$，常用于二分类，也可用于多标签分类。</td>
-<td>与损失函数二元交叉熵binary_crossentropy搭配</td>
-</tr>
-<tr>
-<td>softmax</td>
-<td>$S_{i}=\frac{e^{V_{i}}}{\sum_{j}e^{V_{j}}}$，常用于多分类。</td>
-<td>与损失函数categorical_crossentropy（标签是非连续的）搭配</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>3.反向传播算法</strong></p>
-<p>反向传播是一种高效计算数据流图中梯度的技术。<br>每一层的导数都是后一层导数与前一层输出之积，这真是链式法则的奇妙之处，误差反向传播算法真是利用这一特点。</p>
-<p><strong>4.优化器/函数</strong></p>
-<p>优化器（optimizer）是编译模型所需要的两个参数之一。你可以先实例化一个优化器对象，然后将它传入model.compile()中，也可以通过名称（字符串）来调用优化器。后一种情况，将使用优化器默认的参数，如<strong>学习速率</strong>。</p>
-<p>常用优化器列表：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>随机梯度下降优化器（SGD）</td>
-<td>随机梯度下降优化器和mini- batch是同一个意思，抽取m个小批量（独立分布）样本，通过计算他们的梯度的平均值。</td>
-</tr>
-<tr>
-<td>RMSprop</td>
-<td>增加了一个衰减系数来控制历史信息的获取多少，会对学习速率进行衰减。适合处理序列问题，如文本分类、一维卷积、RNN、序列预测。<strong>建议使用该优化器的默认参数</strong>。</td>
-</tr>
-<tr>
-<td>Adam</td>
-<td>Adam可以看作是修正后的momentum+RMSprop算法，通常被认为对超参数的选择相当的鲁棒，学习速率建议选择0.001。（常用的优化器）</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>5.网络优化与超参数的选择</strong></p>
-<p>网络容量：可以认为与网络中可训练参数成正比。</p>
-<p>一般认为，网络容量越大，网络拟合能力越强。但是，网络容量过大，容易出现过拟合。</p>
-<p>增大网络容量的办法：1）增加每一层的训练参数；2）增加层数。</p>
-<p><strong>经验：增加层数比增加每一层的训练参数效果更好</strong></p>
-<p>6.抑制过拟合</p>
-<p>抑制过拟合的最好方法：增加数据（。。。。。。）</p>
-<p>其他方法：</p>
-<ul>
-<li>dropout（比例一般为0.5）</li>
-<li>正则化</li>
-<li>图像增强</li>
-<li>…….</li>
-</ul>
-<h1 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h1><ul>
-<li>保存与加载模型</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 保存模型，模型文件类型为.h5</span></span><br><span class="line">model.save(<span class="string">'文件路径/w文件名.h5'</span>)</span><br><span class="line"><span class="comment"># 例如，model为要保存的模型对象</span></span><br><span class="line">model.save(<span class="string">'./network_model/word2vec_normalization_network.h5'</span>)</span><br><span class="line"><span class="comment">#############分割线#############</span></span><br><span class="line"><span class="comment"># 加载模型，使用tf.keras.models</span></span><br><span class="line">tf.keras.models.load_model(<span class="string">'文件路径/文件名.h5'</span>)</span><br><span class="line"><span class="comment"># 例如</span></span><br><span class="line">model = tf.keras.models.load_model(<span class="string">'./network_model/word2vec_normalization_network.h5'</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>matplotlib.pyplot 绘图库</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 引用</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line"><span class="comment">##绘制##</span></span><br><span class="line"><span class="comment"># 填充数据--&gt;(x,y)，在show前写多个plot可以将数据绘制在一个图上</span></span><br><span class="line">plt.plot(history.epoch,history.history.get(<span class="string">'acc'</span>),label=<span class="string">'acc'</span>)</span><br><span class="line">plt.plot(history.epoch,history.history.get(<span class="string">'loss'</span>),label=<span class="string">'loss'</span>)</span><br><span class="line"><span class="comment"># 显示图例</span></span><br><span class="line">plt.legend()</span><br><span class="line"><span class="comment"># 显示</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/12/07/tensorflow2-x-keras/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
